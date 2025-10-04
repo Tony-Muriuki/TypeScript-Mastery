@@ -105,3 +105,16 @@ const user = {
 const isTrue =
   user.role === Roles.ADMIN ? "This user is ADMIN" : "User is not ADMIN";
 console.log(isTrue);
+
+/*Lecture 10 The Any Type In Typescript*/
+let dynamicData: any;
+dynamicData = 42;
+dynamicData = "Hello";
+dynamicData = true;
+dynamicData = [1, "two", false];
+dynamicData = { name: "Tony", role: "developer" };
+
+let mixedArray: any[] = [1, "text", false, { id: 1 }];
+// Each element can be a different type.
+// Useful for handling unstructured or unpredictable data, e.g., from APIs or user inputs.
+// However, TypeScript can’t ensure type safety during data manipulation.
