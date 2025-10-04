@@ -66,11 +66,39 @@ var Roles;
     Roles[Roles["READ_WRITE"] = 3] = "READ_WRITE";
 })(Roles || (Roles = {}));
 // let role: Roles = Roles.ADMIN;
-var user = {
+var user1 = {
     name: "John",
     age: 30,
     gender: "male",
     role: Roles.ADMIN,
 };
-var isTrue = user.role === Roles.ADMIN ? "This user is ADMIN" : "User is not ADMIN";
+var isTrue = user1.role === Roles.ADMIN ? "This user is ADMIN" : "User is not ADMIN";
 console.log(isTrue);
+/*Lecture 10 The Any Type In Typescript*/
+var dynamicData;
+dynamicData = 42;
+dynamicData = "Hello";
+dynamicData = true;
+dynamicData = [1, "two", false];
+dynamicData = { name: "Tony", role: "developer" };
+var mixedArray = [1, "text", false, { id: 1 }];
+// Each element can be a different type.
+// Useful for handling unstructured or unpredictable data, e.g., from APIs or user inputs.
+// However, TypeScript can’t ensure type safety during data manipulation.
+/*Lecture 11 Union Types in Typescript*/
+var user = null;
+function getUser() {
+    //Function that simulates making an API call To the server
+    var uname = "John";
+    var uage = 34;
+    user = { name: uname, age: uage };
+    return user;
+}
+//Invoking func
+// getUser();
+// Example 2: Union Type in Function Parameters
+function printStatus(message, code) {
+    console.log("".concat(message, ": ").concat(code));
+}
+printStatus("Success", 200); // ✅ number
+printStatus("Error", "404"); // ✅ string

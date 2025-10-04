@@ -95,7 +95,7 @@ enum Roles {
 
 // let role: Roles = Roles.ADMIN;
 
-const user = {
+const user1 = {
   name: "John",
   age: 30,
   gender: "male",
@@ -103,7 +103,7 @@ const user = {
 };
 
 const isTrue =
-  user.role === Roles.ADMIN ? "This user is ADMIN" : "User is not ADMIN";
+  user1.role === Roles.ADMIN ? "This user is ADMIN" : "User is not ADMIN";
 console.log(isTrue);
 
 /*Lecture 10 The Any Type In Typescript*/
@@ -118,3 +118,25 @@ let mixedArray: any[] = [1, "text", false, { id: 1 }];
 // Each element can be a different type.
 // Useful for handling unstructured or unpredictable data, e.g., from APIs or user inputs.
 // However, TypeScript can’t ensure type safety during data manipulation.
+
+/*Lecture 11 Union Types in Typescript*/
+
+let user: { name: string; age: number } | null = null;
+
+function getUser() {
+  //Function that simulates making an API call To the server
+  const uname = "John";
+  const uage = 34;
+  user = { name: uname, age: uage };
+  return user;
+}
+//Invoking func
+// getUser();
+
+// Example 2: Union Type in Function Parameters
+function printStatus(message: string, code: string | number) {
+  console.log(`${message}: ${code}`);
+}
+
+printStatus("Success", 200); // ✅ number
+printStatus("Error", "404"); // ✅ string
