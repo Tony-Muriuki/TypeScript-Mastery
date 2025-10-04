@@ -66,3 +66,17 @@ let Person: {
     country: "UK",
   },
 };
+//Lecture 7  Arrays In Typescript : An array is a data structure consisting of a collection of elements each identified by atleast one array index.
+
+let person: (string | number | boolean)[] = ["John", 28, "male", 1000, true]; //Typescript has inferred  person an arr of  (string | number)[]
+// person.push(true) type 'boolean' is not assignable to parameter of type 'string | number'
+
+//Single Type Array
+const names = ["Tony", "Beatrice", "Majesty", "Linda"];
+let birthYear: number[] = [2003, 2007, 2008, 1998];
+
+//Explicity Inferring Type
+let presidents: string[] = [];
+presidents.push("Jommo Kenyatta");
+
+/*Lecture 08 Tuples In Typescript*/
