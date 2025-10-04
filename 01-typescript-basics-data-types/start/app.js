@@ -56,3 +56,21 @@ presidents.push("Jommo Kenyatta");
 /*Lecture 08 Tuples In Typescript*/
 var employee = [123, "John", 2000, true];
 console.log(employee);
+//We use a tuple when we want a fixed length array and specific types
+/*Lecture 09 : Enums In Typescript*/
+var Roles;
+(function (Roles) {
+    Roles[Roles["ADMIN"] = 0] = "ADMIN";
+    Roles[Roles["READ_ONLY"] = 1] = "READ_ONLY";
+    Roles[Roles["WRITE_ONLY"] = 2] = "WRITE_ONLY";
+    Roles[Roles["READ_WRITE"] = 3] = "READ_WRITE";
+})(Roles || (Roles = {}));
+// let role: Roles = Roles.ADMIN;
+var user = {
+    name: "John",
+    age: 30,
+    gender: "male",
+    role: Roles.ADMIN,
+};
+var isTrue = user.role === Roles.ADMIN ? "This user is ADMIN" : "User is not ADMIN";
+console.log(isTrue);

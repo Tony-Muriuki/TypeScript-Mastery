@@ -84,3 +84,24 @@ presidents.push("Jommo Kenyatta");
 let employee: [number, string, number, boolean] = [123, "John", 2000, true];
 console.log(employee);
 //We use a tuple when we want a fixed length array and specific types
+
+/*Lecture 09 : Enums In Typescript*/
+enum Roles {
+  ADMIN, // 0
+  READ_ONLY, // 1
+  WRITE_ONLY, // 2
+  READ_WRITE, // 3
+}
+
+// let role: Roles = Roles.ADMIN;
+
+const user = {
+  name: "John",
+  age: 30,
+  gender: "male",
+  role: Roles.ADMIN,
+};
+
+const isTrue =
+  user.role === Roles.ADMIN ? "This user is ADMIN" : "User is not ADMIN";
+console.log(isTrue);
