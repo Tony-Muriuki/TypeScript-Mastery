@@ -80,3 +80,7 @@ let presidents: string[] = [];
 presidents.push("Jommo Kenyatta");
 
 /*Lecture 08 Tuples In Typescript*/
+
+let employee: [number, string, number, boolean] = [123, "John", 2000, true];
+console.log(employee);
+//We use a tuple when we want a fixed length array and specific types

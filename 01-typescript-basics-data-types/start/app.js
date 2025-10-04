@@ -33,3 +33,26 @@ console.log(sum(n1, n2, false));
 //Type Inference Automatically Implemented
 var n3 = 8091; //Inferred implicitly
 //Type inference is the compilers capability to automatically deduce the data type of an expression(Variable/function) based on its value /context without requiring the programmer to explicitly state the type.
+/*Lecture 6 Object Type In Typescript*/
+//Person was automatically infered to type Object
+var Person = {
+    name: "John",
+    age: 34,
+    gender: "male",
+    address: {
+        city: "London",
+        country: "UK",
+    },
+};
+//Lecture 7  Arrays In Typescript : An array is a data structure consisting of a collection of elements each identified by atleast one array index.
+var person = ["John", 28, "male", 1000, true]; //Typescript has inferred  person an arr of  (string | number)[]
+// person.push(true) type 'boolean' is not assignable to parameter of type 'string | number'
+//Single Type Array
+var names = ["Tony", "Beatrice", "Majesty", "Linda"];
+var birthYear = [2003, 2007, 2008, 1998];
+//Explicity Inferring Type
+var presidents = [];
+presidents.push("Jommo Kenyatta");
+/*Lecture 08 Tuples In Typescript*/
+var employee = [123, "John", 2000, true];
+console.log(employee);
