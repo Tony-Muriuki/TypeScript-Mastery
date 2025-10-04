@@ -28,3 +28,24 @@ let isEqual = false;
 
 let isGreater = 10 > 15;
 console.log(isGreater);
+
+//Type Assignment and Type Inference
+function sum(num1: number, num2: number, isPrint: boolean) {
+  if (isPrint) {
+    let s = num1 + num2;
+    console.log(`Sum of ${num1} and ${num2} is equals to ${s}`);
+  }
+  //Explcitly defining Expected Types
+  return num1 + num2;
+}
+
+//Explicitly Defining Variables
+let n1: number = 10; //Explicitly defined the n1 variable data type to be number
+let n2: number = 20;
+
+console.log(sum(n1, n2, false));
+
+//Type Inference Automatically Implemented
+let n3 = 8091; //Inferred implicitly
+
+//Type inference is the compilers capability to automatically deduce the data type of an expression(Variable/function) based on its value /context without requiring the programmer to explicitly state the type.

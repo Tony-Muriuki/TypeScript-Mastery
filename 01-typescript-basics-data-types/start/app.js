@@ -17,3 +17,19 @@ var isEqual = false;
 //Truthy Values and Falsy Values also Exist in Typescript 0, null , empty string" ",
 var isGreater = 10 > 15;
 console.log(isGreater);
+//Type Assignment and Type Inference
+function sum(num1, num2, isPrint) {
+    if (isPrint) {
+        var s = num1 + num2;
+        console.log("Sum of ".concat(num1, " and ").concat(num2, " is equals to ").concat(s));
+    }
+    //Explcitly defining Expected Types
+    return num1 + num2;
+}
+//Explicitly Defining Variables
+var n1 = 10; //Explicitly defined the n1 variable data type to be number
+var n2 = 20;
+console.log(sum(n1, n2, false));
+//Type Inference Automatically Implemented
+var n3 = 8091; //Inferred implicitly
+//Type inference is the compilers capability to automatically deduce the data type of an expression(Variable/function) based on its value /context without requiring the programmer to explicitly state the type.
