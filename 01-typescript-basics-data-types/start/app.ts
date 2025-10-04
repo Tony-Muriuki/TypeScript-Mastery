@@ -49,3 +49,20 @@ console.log(sum(n1, n2, false));
 let n3 = 8091; //Inferred implicitly
 
 //Type inference is the compilers capability to automatically deduce the data type of an expression(Variable/function) based on its value /context without requiring the programmer to explicitly state the type.
+
+/*Lecture 6 Object Type In Typescript*/
+//Person was automatically infered to type Object
+let Person: {
+  name: string;
+  age: number;
+  gender: string;
+  address: { city: string; country: string };
+} = {
+  name: "John",
+  age: 34,
+  gender: "male",
+  address: {
+    city: "London",
+    country: "UK",
+  },
+};
