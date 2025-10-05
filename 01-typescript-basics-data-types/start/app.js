@@ -102,3 +102,24 @@ function printStatus(message, code) {
 }
 printStatus("Success", 200); // ✅ number
 printStatus("Error", "404"); // ✅ string
+/*Lecture 12 Literal Types in Typescript*/
+var str = "Hello World !";
+//Literal Type Example
+function roleMessage(role) {
+    switch (role) {
+        case "admin":
+            console.log("You have admin permission on this site");
+            break;
+        case "read":
+            console.log("You have Read Permission on This Site");
+            break;
+        case "read-write":
+            console.log("You have read/write Permission on this site");
+            break;
+        default:
+            console.log("Unknown User Permission");
+    }
+}
+roleMessage("admin");
+roleMessage("read");
+roleMessage("broker");

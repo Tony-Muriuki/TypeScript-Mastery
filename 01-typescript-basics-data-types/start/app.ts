@@ -140,3 +140,31 @@ function printStatus(message: string, code: string | number) {
 
 printStatus("Success", 200); // ✅ number
 printStatus("Error", "404"); // ✅ string
+
+/*Lecture 12 Literal Types in Typescript*/
+const str = "Hello World !";
+//Literal Type Example
+function roleMessage(role: "admin" | "read" | "read-write") {
+  switch (role) {
+    case "admin":
+      console.log("You have admin permission on this site");
+      break;
+    case "read":
+      console.log("You have Read Permission on This Site");
+      break;
+    case "read-write":
+      console.log("You have read/write Permission on this site");
+      break;
+    default:
+      console.log("Unknown User Permission");
+  }
+}
+roleMessage("admin");
+roleMessage("read");
+// roleMessage("broker")------;//Argument of type '"broker"' is not assignable to parameter of type '"admin" | "read" | "read-write"'.
+
+type ResponseCode = 200 | 404 | 500;
+type Toggle = true | false;
+
+let code: ResponseCode = 404; // ✅
+let isOn: Toggle = true; // ✅
