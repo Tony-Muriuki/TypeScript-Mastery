@@ -97,11 +97,11 @@ function getUser() {
 //Invoking func
 // getUser();
 // Example 2: Union Type in Function Parameters
-function printStatus(message, code) {
+function printStatus1(message, code) {
     console.log("".concat(message, ": ").concat(code));
 }
-printStatus("Success", 200); // ✅ number
-printStatus("Error", "404"); // ✅ string
+printStatus1("Success", 200); // ✅ number
+printStatus1("Error", "404"); // ✅ string
 /*Lecture 12 Literal Types in Typescript*/
 var str = "Hello World !";
 //Literal Type Example
@@ -122,4 +122,17 @@ function roleMessage(role) {
 }
 roleMessage("admin");
 roleMessage("read");
-roleMessage("broker");
+var code = 404; // ✅
+var isOn = true; // ✅
+var str4 = "Hello Typescript"; //so here the str4 is of type string but we inferred it with a custom name type.
+//Function Example
+function printStatus(message, code) {
+    if (typeof code === "string") {
+        console.log("".concat(message, ",Status code:").concat(code.trim()));
+    }
+    else {
+        console.log("".concat(message, ",Status code:").concat(code));
+    }
+}
+printStatus("Request was Successful", 200);
+printStatus("Request was not found", 404);

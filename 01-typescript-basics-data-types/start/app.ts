@@ -134,12 +134,12 @@ function getUser() {
 // getUser();
 
 // Example 2: Union Type in Function Parameters
-function printStatus(message: string, code: string | number) {
+function printStatus1(message: string, code: string | number) {
   console.log(`${message}: ${code}`);
 }
 
-printStatus("Success", 200); // ✅ number
-printStatus("Error", "404"); // ✅ string
+printStatus1("Success", 200); // ✅ number
+printStatus1("Error", "404"); // ✅ string
 
 /*Lecture 12 Literal Types in Typescript*/
 const str = "Hello World !";
@@ -168,3 +168,27 @@ type Toggle = true | false;
 
 let code: ResponseCode = 404; // ✅
 let isOn: Toggle = true; // ✅
+
+/*Lecture 13 TYPE ALIAS IN TYPESCRIPT*/
+
+//def:---A Type Alias (or custom type) in TypeScript allows you to assign a name to any type (primitive, union, literal, object, etc.).
+
+//So basically it allows us to define a type with a custom name
+
+type stringType = string;
+
+let str4: stringType = "Hello Typescript"; //so here the str4 is of type string but we inferred it with a custom name type.
+
+//Type Alias to be used in func below
+type stringOrNumber = string | number;
+
+//Function Example
+function printStatus(message: string, code: stringOrNumber) {
+  if (typeof code === "string") {
+    console.log(`${message},Status code:${code.trim()}`);
+  } else {
+    console.log(`${message},Status code:${code}`);
+  }
+}
+printStatus("Request was Successful", 200);
+printStatus("Request was not found", 404);
