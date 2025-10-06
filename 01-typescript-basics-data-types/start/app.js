@@ -168,3 +168,41 @@ greet(user4);
 // let greet: (usr: User) => void
 greet = isValid;
 greet(user4);
+/*Function Type For Callback*/
+//Variable addNumbers
+var addNumbers;
+//Summation function
+function summation(n1, n2) {
+    return n1 + n2;
+}
+//Additions function
+function additions(n1, n2) {
+    console.log(n1 + n2);
+}
+addNumbers = summation; //No Error : Because function signature matches the target function signature
+// addNumbers=additions Error: This is because the function signature of this func does not match the function signature of addNumbers
+//Specifying function Types for Callbacks
+function getResult(num1, num2, print) {
+    var result = num1 + num2;
+    print("Sum =", result);
+}
+//The getResult function will display message and result ideally
+function display(msg, result) {
+    console.log(msg + result);
+}
+getResult(5, 10, display);
+/*Lecture 17 The Unkown Type in Typescript*/
+var inputVal;
+inputVal = 400;
+inputVal = true;
+inputVal = "Beatrice";
+inputVal = { name: "Tony" };
+if (typeof inputVal === "string") {
+    inputVal.trim();
+}
+/*Lecture 18 Never Type In Typescript*/
+function createError(errormsg, errorCode) {
+    throw { message: errormsg, code: errorCode };
+    console.log(errormsg);
+}
+createError("Internal Server Error", 500);
