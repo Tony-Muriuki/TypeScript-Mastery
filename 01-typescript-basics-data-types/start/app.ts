@@ -192,3 +192,12 @@ function printStatus(message: string, code: stringOrNumber) {
 }
 printStatus("Request was Successful", 200);
 printStatus("Request was not found", 404);
+
+/*Lecture 14 Function Return Type*/
+// A function return type in typescript defines what kind of value a function will produce. Typescript can infer the return type automatically or it can be explicitly be defined by the developer for type safety and clarity
+
+//--Function add
+function add(num1: number, num2: number) {
+  //function add(num1: number, num2: number): number
+  return num1 + num2;
+}
