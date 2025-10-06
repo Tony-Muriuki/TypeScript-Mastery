@@ -201,3 +201,39 @@ function add(num1: number, num2: number) {
   //function add(num1: number, num2: number): number
   return num1 + num2;
 }
+
+/*Lecture 15 Function as Type in Typescript*/
+type User = { name: string; age: number };
+
+//Salutation function ---Typescript
+function greetUsers(user: User) {
+  const greeting = `Hello ` + user.name;
+  console.log(greeting);
+}
+//Addition Function ---Typescript
+
+function addition(num1: number, num2: number) {
+  return num1 + num2;
+}
+
+//isEligible Function
+function isValid(usr: User) {
+  console.log(usr.age >= 18);
+}
+
+let greet: (usr: User) => void;
+greet = greetUsers;
+
+let user4 = { name: "John", age: 24 };
+greet(user4);
+
+// greet=100 Type 'number' is not assignable to type 'Function'.ts(2322)
+// let greet: Function
+
+//assigning addition funct to greet X
+// // greet = addition;Type '(num1: number, num2: number) => number' is not assignable to type '(usr: User) => void'.
+//   Target signature provides too few arguments. Expected 2 or more, but got 1.ts(2322)
+// let greet: (usr: User) => void
+
+greet = isValid;
+greet(user4);

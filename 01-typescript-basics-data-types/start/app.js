@@ -136,3 +136,35 @@ function printStatus(message, code) {
 }
 printStatus("Request was Successful", 200);
 printStatus("Request was not found", 404);
+/*Lecture 14 Function Return Type*/
+// A function return type in typescript defines what kind of value a function will produce. Typescript can infer the return type automatically or it can be explicitly be defined by the developer for type safety and clarity
+//--Function add
+function add(num1, num2) {
+    //function add(num1: number, num2: number): number
+    return num1 + num2;
+}
+//Salutation function ---Typescript
+function greetUsers(user) {
+    var greeting = "Hello " + user.name;
+    console.log(greeting);
+}
+//Addition Function ---Typescript
+function addition(num1, num2) {
+    return num1 + num2;
+}
+//isEligible Function
+function isValid(usr) {
+    console.log(usr.age >= 18);
+}
+var greet;
+greet = greetUsers;
+var user4 = { name: "John", age: 24 };
+greet(user4);
+// greet=100 Type 'number' is not assignable to type 'Function'.ts(2322)
+// let greet: Function
+//assigning addition funct to greet X
+// // greet = addition;Type '(num1: number, num2: number) => number' is not assignable to type '(usr: User) => void'.
+//   Target signature provides too few arguments. Expected 2 or more, but got 1.ts(2322)
+// let greet: (usr: User) => void
+greet = isValid;
+greet(user4);
