@@ -115,3 +115,18 @@ function addNumbers(...numbers: number[]): number {
 console.log(addNumbers(1, 2), "Sum 1");
 console.log(addNumbers(1, 2, 5, 7), "Sum 2");
 console.log(addNumbers(1, 2, 5, 6, 7, 9), "Sum 3");
+
+//  THE NULLISH COALESCING OPERATOR
+
+// The Nullish coalescing operator ?? is a logical operator introduced in Es2020 that returns the right hand operand when the left hand operand is null or undefined
+
+const guest: number = 0 || 10;
+console.log(guest);
+
+const value = null;
+
+let storage = value ?? "DEFAULT";
+
+console.log(storage);
+
+// so nullish values are null or undefined.Only nullish values short circuit evaluation when using the nullish coalescing operator(??)
