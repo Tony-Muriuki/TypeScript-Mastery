@@ -58,3 +58,24 @@ console.log(letters);
 //Spread in Objects ----Copyng Objects
 const usersObjCopy = Object.assign({}, user);
 console.log(usersObjCopy);
+//Rest Pattern and Rest Parameter
+// The rest pattern uses the exact same syntax as the spread operator (...) but to collect values to an array or object
+// So the rest pattern uses the exact same syntax but to collect multiple elements and condense them into an array
+// Array Destructuring with Rest.
+const candidates = ["Annice", "Beverly", "Brian", "Ryan"];
+const [grad1, grad2, ...failures] = candidates;
+console.log(failures);
+let [a, b, ...rest] = [1, 2, 3, 4, 5];
+console.log(rest);
+// Difference is that Rest pattern is on the left side of the assignment operator and collects values and condense them into an array while the Spread operator is used on the right hand side of the assignment operator and is used to expand iterables into individual elements.
+// Rest Parameters syntax allow you to represent an indefinate numbers of function arguements as an array.This is useful when you dont know how many  arguements will be passed to the function.
+// Syntax
+// function restParam(...restParameter){}restParam(1,2,3)
+// Example of Rest Parameter
+function addNumbers(...numbers) {
+    //Rest parameter should be of type Array always
+    return numbers.reduce((sum, current) => sum + current, 0);
+}
+console.log(addNumbers(1, 2), "Sum 1");
+console.log(addNumbers(1, 2, 5, 7), "Sum 2");
+console.log(addNumbers(1, 2, 5, 6, 7, 9), "Sum 3");
