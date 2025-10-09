@@ -6,8 +6,8 @@
 
 const person: (string | number)[] = ["John", "Smith", 28]; //const person: (string | number)[]
 
-const [fname, lmane, age, gender = "male"] = person;
-console.log(fname, age, gender);
+const [fname, lmane, age1, gender1 = "male"] = person;
+console.log(fname, age1, gender1);
 console.log(person);
 
 //Skipping Elements: You can skip by leaving blank spaces between commas
@@ -40,3 +40,18 @@ const user: {
   gender: "male",
   city: "london",
 };
+
+// When Destructuring Objects The variable name must match the property name but you can rename it too
+const { forename, age, gender, city } = user;
+console.log(forename, age, gender, city);
+
+//Variable Renaming
+const response: { message: string; code: number } = {
+  message: "Resource Not Found",
+  code: 404,
+};
+//Destructure--But  Rename Variables
+const { message: msg, code: state } = response;
+console.log("Renamed Variables", msg, state);
+
+// The Spread Operator
