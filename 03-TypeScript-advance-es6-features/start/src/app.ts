@@ -27,4 +27,16 @@ console.log(num1, num3, num4);
 
 // Object Destructurring : Obj Syntax    const { prop1, prop2 } = object;<---Use Curlybraces
 
-//
+//Object destructuring is a feature in Es6 that allows you to extract properties from an object andassign them to variables using a concise and readable syntax.
+
+const user: {
+  forename: string;
+  age: number;
+  gender: string;
+  city: string;
+} = {
+  forename: "John",
+  age: 28,
+  gender: "male",
+  city: "london",
+};
