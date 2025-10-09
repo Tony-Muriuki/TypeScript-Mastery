@@ -1,5 +1,6 @@
 "use strict";
 //  Destructuring is a feature that was introduced in Es6(Ecmascript2015) that allows us to extract values/elements from arrays or properties from objects into distinct variables
+var _a;
 // Array destructuring:Is a modern (Es6) feature that allows you to unpack elements from an array into individual variables in a concise and readable way.
 /*Syntax For array destructuring Syntax const [arr1,arr2]= array */
 const person = ["John", "Smith", 28]; //const person: (string | number)[]
@@ -87,3 +88,19 @@ const value = null;
 let storage = value !== null && value !== void 0 ? value : "DEFAULT";
 console.log(storage);
 // so nullish values are null or undefined.Only nullish values short circuit evaluation when using the nullish coalescing operator(??)
+//LECTURE 33: OPTIONAL CHAINING (?)
+// Optional chaining is a powerful Javascript feature that allows you to access deeply nested properties of an object without having to check if each reference in the chain is valid.
+// If any reference in the chain is null or undefined the expression will return undefined without having to throw an error
+const products = [
+    { name: "iPhone", price: 1200, details: { color: "black", ram: 8 } },
+    { name: "T-Shirt", price: 120, details: { color: "red", size: 32 } },
+    { name: "TS Book", price: 50, pages: 120, author: "Sam" },
+];
+//Iteration
+for (let prod of products) {
+    console.log("Product name: " + prod.name);
+    console.log("**************************");
+    console.log("product price: " + prod.price);
+    console.log("Color: " + ((_a = prod.details) === null || _a === void 0 ? void 0 : _a.color));
+    console.log("\n\n");
+}
