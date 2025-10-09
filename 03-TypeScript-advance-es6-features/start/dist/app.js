@@ -104,3 +104,20 @@ for (let prod of products) {
     console.log("Color: " + ((_a = prod.details) === null || _a === void 0 ? void 0 : _a.color));
     console.log("\n\n");
 }
+// Arrow Functions ()=>{}
+// An arrow function is a concise alternative to the traditional function expression with some semantic differences-----In javascript we can specify a function in 3 ways function declaration, function expression, arrow function
+//FUNCTION DECLARATION 1
+function print(message) {
+    console.log(message);
+}
+// Function Expression 2
+const sum = function (num1, num2) {
+    return num1 + num2;
+};
+//Arrow Function 3
+const sum2 = (num1) => num1 + 10;
+// callback function inn event listener in form of an arrow function
+const button = document.getElementById("btn");
+button === null || button === void 0 ? void 0 : button.addEventListener("click", () => {
+    console.log("button clicked");
+});
