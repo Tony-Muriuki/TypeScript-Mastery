@@ -115,9 +115,16 @@ const sum = function (num1, num2) {
     return num1 + num2;
 };
 //Arrow Function 3
+/**********Specifying Function Type***** */
 const sum2 = (num1) => num1 + 10;
 // callback function inn event listener in form of an arrow function
 const button = document.getElementById("btn");
 button === null || button === void 0 ? void 0 : button.addEventListener("click", () => {
     console.log("button clicked");
 });
+// LECTURE 35: DEFAULT FUNCTION PARAMETER
+function printDetails(name, age, gender = "male") {
+    const message = `Hi! my name is ${name}. And i am ${age}
+    years old ${gender}`;
+    console.log(message);
+}
