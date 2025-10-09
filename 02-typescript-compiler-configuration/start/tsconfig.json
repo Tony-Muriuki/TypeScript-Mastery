@@ -11,7 +11,7 @@
     "target": "es2016",
     "types": [],
     // For nodejs:
-    // "lib": ["esnext"],
+    "lib": ["ES2016", "DOM", "DOM.Iterable", "ScriptHost"],
     // "types": ["node"],
     // and npm install -D @types/node
 

@@ -11,3 +11,27 @@ console.log("TypeScript is Awesome");
 //tsc --init will tell the typescript compiler that everything in this folder where we are running the command should be managed by Typescript.
 
 //so i guess the tsc --init command initializes the folder as a typescript project.
+
+const button = document.getElementById("btn")!;
+button.addEventListener("click", () => {
+  console.log("Button is Clicked");
+});
+
+// TSCONFIG>JSON STRUCTURE SAMPLE
+
+// {
+//   "compilerOptions": {
+//     "target": "ES6",
+//     "module": "ES6",
+//     "outDir": "./dist",
+//     "rootDir": "./src",
+//     "strict": true,
+//     "moduleResolution": "node",
+//     "allowJs": true,
+//     "sourceMap": true,
+//     "esModuleInterop": true,
+//     "allowSyntheticDefaultImports": true
+//   },
+//   "include": ["src/**/*"],
+//   "exclude": ["node_modules"]
+// }
