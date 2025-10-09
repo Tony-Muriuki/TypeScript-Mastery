@@ -36,3 +36,25 @@ const response = {
 //Destructure--But  Rename Variables
 const { message: msg, code: state } = response;
 console.log("Renamed Variables", msg, state);
+// The Spread Operator
+// The spread operator is a convinient and powerful syntax used to expand iterables(like arrays,strings,maps and sets)into individual elements.
+// Its mostly used for copying merging or expanding elements of arrays or objects
+const users = ["John", "Mark", "Mary"];
+console.log(users);
+//Expanding Elements of Users Array Into Individual Values
+console.log(...users);
+const voters = ["Beatrice", "Tony", ...users];
+console.log(voters);
+//Copying Arrays(Shallow Copy)
+const usersCopy = [...users];
+console.log("Users Copy", usersCopy);
+//Spread used in Merging
+const mergedArr = [...users, ...voters, ...usersCopy];
+console.log("Merged Array", mergedArr);
+//Spreading Strings
+const girlFriend = "Beatrice";
+const letters = [...girlFriend];
+console.log(letters);
+//Spread in Objects ----Copyng Objects
+const usersObjCopy = Object.assign({}, user);
+console.log(usersObjCopy);
