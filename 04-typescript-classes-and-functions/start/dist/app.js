@@ -26,6 +26,11 @@ var user2 = new User("merry", "jane", 32, "female");
 var user3 = new User("mark", "vought", 29, "male");
 // Invoking Greet User
 user1.greetuser("Mrs");
+/*__proto__ is a built-in JavaScript property on all objects.
+
+But TypeScript’s type definitions for class instances (like User) don’t explicitly include __proto__, since it’s considered non-standard and deprecated in favor of Object.getPrototypeOf().
+
+So TypeScript blocks direct access unless you explicitly bypass type checking.*/
 // The Prototype Chain
 /*1: user1 (the instance)
 → has its own properties: name, age, gender.
@@ -54,3 +59,33 @@ null
 Object.getPrototypeOf(user1) === User.prototype; // ✅
 Object.getPrototypeOf(User.prototype) === Object.prototype; // ✅
 Object.getPrototypeOf(Object.prototype) === null; // ✅
+/*Lecture 39 ACCESS Modifiers */
+var Employee = /** @class */ (function () {
+    function Employee(name, sal, loc, isEligible, hikePercent) {
+        this.empName = name;
+        this.salary = sal;
+        this.baseLocation = loc;
+        this.isEligible = isEligible;
+        this.hikePercent = hikePercent;
+    }
+    Employee.prototype.getSalary = function () {
+        if (this.isEligible) {
+            return this.getNewsalary();
+        }
+        return this.salary;
+    };
+    Employee.prototype.getNewsalary = function () {
+        return this.salary + (this.salary * this.hikePercent) / 100;
+    };
+    return Employee;
+}());
+//Creating an Instance
+var employee = new Employee("John Smith", 10000, "London", true, 20);
+console.log(employee);
+//Resetting The Salary
+// employee.salary = 20000;
+console.log(employee);
+//We have 2 Access Modifiers : Public and Private
+// 1: The public access modifier makes a property and a method accessible to everyone.
+// 2: The private access modifier makes the property or method accesible only within the class: So when we make a property private it becomes accesible only within the class where it was defined
+console.log(Object.getPrototypeOf(employee) === Employee.prototype);
