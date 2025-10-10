@@ -1,5 +1,20 @@
 "use strict";
 //Classes and Functions
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 // Object oriented programming is a programming paradigm(style of writing and organizing code) based on the concepts of objects.
 /*
 1:Objects can contain data which we call Properties and code which we call Methods.
@@ -60,27 +75,27 @@ Object.getPrototypeOf(user1) === User.prototype; // ✅
 Object.getPrototypeOf(User.prototype) === Object.prototype; // ✅
 Object.getPrototypeOf(Object.prototype) === null; // ✅
 /*Lecture 39 ACCESS Modifiers */
-var Employee = /** @class */ (function () {
-    function Employee(name, sal, loc, isEligible, hikePercent) {
+var Employee1 = /** @class */ (function () {
+    function Employee1(name, sal, loc, isEligible, hikePercent) {
         this.empName = name;
         this.salary = sal;
         this.baseLocation = loc;
         this.isEligible = isEligible;
         this.hikePercent = hikePercent;
     }
-    Employee.prototype.getSalary = function () {
+    Employee1.prototype.getSalary = function () {
         if (this.isEligible) {
             return this.getNewsalary();
         }
         return this.salary;
     };
-    Employee.prototype.getNewsalary = function () {
+    Employee1.prototype.getNewsalary = function () {
         return this.salary + (this.salary * this.hikePercent) / 100;
     };
-    return Employee;
+    return Employee1;
 }());
 //Creating an Instance
-var employee = new Employee("John Smith", 10000, "London", true, 20);
+var employee = new Employee1("John Smith", 10000, "London", true, 20);
 console.log(employee);
 //Resetting The Salary
 // employee.salary = 20000;
@@ -88,4 +103,35 @@ console.log(employee);
 //We have 2 Access Modifiers : Public and Private
 // 1: The public access modifier makes a property and a method accessible to everyone.
 // 2: The private access modifier makes the property or method accesible only within the class: So when we make a property private it becomes accesible only within the class where it was defined
-console.log(Object.getPrototypeOf(employee) === Employee.prototype);
+console.log(Object.getPrototypeOf(employee) === Employee1.prototype);
+/************************UNDERSTANDING INHERITANCE************************ */
+//Person Class
+var Person = /** @class */ (function () {
+    function Person(name, dob, gender) {
+        this.name = name;
+        this.dob = dob;
+        this.gender = gender;
+    }
+    //Age Method
+    Person.prototype.calculateAge = function () {
+        return new Date().getFullYear() - new Date(this.dob).getFullYear();
+    };
+    return Person;
+}());
+// Employee class
+var Employee = /** @class */ (function (_super) {
+    __extends(Employee, _super);
+    function Employee(n, dob, gen, salary, bonus) {
+        var _this = _super.call(this, n, dob, gen) || this;
+        _this.salary = salary;
+        _this.bonus = bonus;
+        return _this;
+    }
+    //Method Get Salary
+    Employee.prototype.getSalary = function () {
+        return this.salary + this.bonus;
+    };
+    return Employee;
+}(Person));
+var emp = new Employee("john", "08-30-1991", "male", 10000, 2000);
+console.log(emp.calculateAge());

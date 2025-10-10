@@ -78,7 +78,7 @@ Object.getPrototypeOf(Object.prototype) === null; // ✅
 
 /*Lecture 39 ACCESS Modifiers */
 
-class Employee {
+class Employee1 {
   empName: string;
   private salary: number;
   baseLocation: string;
@@ -110,7 +110,7 @@ class Employee {
   }
 }
 //Creating an Instance
-const employee = new Employee("John Smith", 10000, "London", true, 20);
+const employee = new Employee1("John Smith", 10000, "London", true, 20);
 console.log(employee);
 
 //Resetting The Salary
@@ -122,4 +122,46 @@ console.log(employee);
 // 1: The public access modifier makes a property and a method accessible to everyone.
 // 2: The private access modifier makes the property or method accesible only within the class: So when we make a property private it becomes accesible only within the class where it was defined
 
-console.log(Object.getPrototypeOf(employee) === Employee.prototype);
+console.log(Object.getPrototypeOf(employee) === Employee1.prototype);
+
+/************************UNDERSTANDING INHERITANCE************************ */
+
+//Person Class
+class Person {
+  name: string;
+  dob: string;
+  gender: string;
+  constructor(name: string, dob: string, gender: string) {
+    this.name = name;
+    this.dob = dob;
+    this.gender = gender;
+  }
+  //Age Method
+  calculateAge() {
+    return new Date().getFullYear() - new Date(this.dob).getFullYear();
+  }
+}
+
+// Employee class
+class Employee extends Person {
+  salary: number;
+  bonus: number;
+  constructor(
+    n: string,
+    dob: string,
+    gen: string,
+    salary: number,
+    bonus: number
+  ) {
+    super(n, dob, gen);
+    this.salary = salary;
+    this.bonus = bonus;
+  }
+
+  //Method Get Salary
+  getSalary() {
+    return this.salary + this.bonus;
+  }
+}
+const emp = new Employee("john", "08-30-1991", "male", 10000, 2000);
+console.log(emp.calculateAge());
