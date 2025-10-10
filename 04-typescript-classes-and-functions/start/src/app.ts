@@ -129,7 +129,7 @@ console.log(Object.getPrototypeOf(employee) === Employee1.prototype);
 //Person Class
 class Person {
   name: string;
-  dob: string;
+  protected dob: string;
   gender: string;
   constructor(name: string, dob: string, gender: string) {
     this.name = name;
@@ -162,6 +162,15 @@ class Employee extends Person {
   getSalary() {
     return this.salary + this.bonus;
   }
+  //Method Overriding From The Parent Class
+  calculateAge(): number {
+    console.log("Calculate Age of Employee called");
+    return 2024 - new Date(this.dob).getFullYear();
+  }
 }
 const emp = new Employee("john", "08-30-1991", "male", 10000, 2000);
 console.log(emp.calculateAge());
+
+/***************************************************
+ * *********LECTURE 44: GETTER & SETTER*************
+ ***************************************************/

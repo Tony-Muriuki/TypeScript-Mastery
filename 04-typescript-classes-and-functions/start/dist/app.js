@@ -131,7 +131,15 @@ var Employee = /** @class */ (function (_super) {
     Employee.prototype.getSalary = function () {
         return this.salary + this.bonus;
     };
+    //Method Overriding From The Parent Class
+    Employee.prototype.calculateAge = function () {
+        console.log("Calculate Age of Employee called");
+        return 2024 - new Date(this.dob).getFullYear();
+    };
     return Employee;
 }(Person));
 var emp = new Employee("john", "08-30-1991", "male", 10000, 2000);
 console.log(emp.calculateAge());
+/***************************************************
+ * *********LECTURE 44: GETTER & SETTER*************
+ ***************************************************/
