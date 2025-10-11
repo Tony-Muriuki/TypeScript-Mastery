@@ -231,3 +231,8 @@ class Circle {
     this._radius = _radius;
   }
 }
+
+/***************************************************
+ * ****LECTURE 45: STATIC METHODS & PROPERTIES******
+ ***************************************************/
+class Employee3 {}

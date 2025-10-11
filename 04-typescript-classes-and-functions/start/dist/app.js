@@ -208,3 +208,11 @@ var Circle = /** @class */ (function () {
     });
     return Circle;
 }());
+/***************************************************
+ * ****LECTURE 45: STATIC METHODS & PROPERTIES******
+ ***************************************************/
+var Employee3 = /** @class */ (function () {
+    function Employee3() {
+    }
+    return Employee3;
+}());
