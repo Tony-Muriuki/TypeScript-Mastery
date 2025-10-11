@@ -305,3 +305,24 @@ console.log(contractemp1.getSalary());
 // Using Abstract we can define an abstract class which can contain some properties which will be common for all its child classes
 
 // An abstract class cannot be instantiated directly
+
+// PRIVATE CONSTRUCTOR AND SINGLETON
+// Why would we want a private constructor: A private constructor restricts the creation of a classes instance directly from outside the class and this enforces controlled initialization and also enforces potentially the singlton pattern
+
+// To implement singleton pattern we need to make the constructor of this class Private
+
+class Personn {
+  private static _instance: Personn;
+  constructor() {}
+  //Method responsible for creating instance of Personn class
+  static getInstance() {
+    if (Personn._instance) {
+      return new Personn();
+    } else {
+      Personn._instance = new Personn();
+      return Personn._instance;
+    }
+  }
+}
+const person1 = Personn.getInstance();
+const person2 = Personn.getInstance();
