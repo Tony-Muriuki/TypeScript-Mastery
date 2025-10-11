@@ -292,3 +292,6 @@ var Personn = /** @class */ (function () {
 }());
 var person1 = Personn.getInstance();
 var person2 = Personn.getInstance();
+/***************************************************
+ * ***********LECTURE 48: INTERFACE*****************
+ ***************************************************/

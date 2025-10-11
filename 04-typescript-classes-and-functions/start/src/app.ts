@@ -326,3 +326,7 @@ class Personn {
 }
 const person1 = Personn.getInstance();
 const person2 = Personn.getInstance();
+
+/***************************************************
+ * ***********LECTURE 48: INTERFACE*****************
+ ***************************************************/
