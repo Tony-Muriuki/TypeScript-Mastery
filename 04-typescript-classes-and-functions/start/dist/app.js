@@ -106,17 +106,17 @@ console.log(employee);
 console.log(Object.getPrototypeOf(employee) === Employee1.prototype);
 /************************UNDERSTANDING INHERITANCE************************ */
 //Person Class
-var Person = /** @class */ (function () {
-    function Person(name, dob, gender) {
+var Person1 = /** @class */ (function () {
+    function Person1(name, dob, gender) {
         this.name = name;
         this.dob = dob;
         this.gender = gender;
     }
     //Age Method
-    Person.prototype.calculateAge = function () {
+    Person1.prototype.calculateAge = function () {
         return new Date().getFullYear() - new Date(this.dob).getFullYear();
     };
-    return Person;
+    return Person1;
 }());
 // Employee class
 var Employee = /** @class */ (function (_super) {
@@ -137,9 +137,74 @@ var Employee = /** @class */ (function (_super) {
         return 2024 - new Date(this.dob).getFullYear();
     };
     return Employee;
-}(Person));
+}(Person1));
 var emp = new Employee("john", "08-30-1991", "male", 10000, 2000);
 console.log(emp.calculateAge());
 /***************************************************
  * *********LECTURE 44: GETTER & SETTER*************
  ***************************************************/
+var Person = /** @class */ (function () {
+    function Person(name) {
+        this._age = null;
+        this.name = name;
+    }
+    Object.defineProperty(Person.prototype, "age", {
+        //Getter Func:To create a getter we use the get keyword
+        get: function () {
+            if (this._age != null) {
+                return this._age;
+            }
+            throw new Error("Age is not defined for the person ".concat(this.name));
+        },
+        // To create a setter we use the Set Keyword
+        set: function (value) {
+            if (value > 0) {
+                this._age = value;
+            }
+            else {
+                throw new Error("Age cannot be a negative value");
+            }
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return Person;
+}());
+//Instance
+var person = new Person("John");
+// Before Setter
+// console.log(person.age, "Getter");
+// After Setter
+person.age = 90;
+console.log(person.age, "Getter");
+// Computed Properties
+var Circle = /** @class */ (function () {
+    function Circle(_radius) {
+        this._radius = _radius;
+    }
+    Object.defineProperty(Circle.prototype, "radius", {
+        //Getter Method
+        get: function () {
+            return this._radius;
+        },
+        // Setter Method
+        set: function (value) {
+            this._radius = value;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Circle.prototype, "diameter", {
+        // Get Diameter
+        get: function () {
+            return this._radius * 2;
+        },
+        //Set Diameter
+        set: function (val) {
+            this._radius = val / 2;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return Circle;
+}());

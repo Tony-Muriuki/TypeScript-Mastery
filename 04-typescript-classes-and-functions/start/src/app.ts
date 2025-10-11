@@ -127,7 +127,7 @@ console.log(Object.getPrototypeOf(employee) === Employee1.prototype);
 /************************UNDERSTANDING INHERITANCE************************ */
 
 //Person Class
-class Person {
+class Person1 {
   name: string;
   protected dob: string;
   gender: string;
@@ -143,7 +143,7 @@ class Person {
 }
 
 // Employee class
-class Employee extends Person {
+class Employee extends Person1 {
   salary: number;
   bonus: number;
   constructor(
@@ -174,3 +174,60 @@ console.log(emp.calculateAge());
 /***************************************************
  * *********LECTURE 44: GETTER & SETTER*************
  ***************************************************/
+class Person {
+  public name: string;
+  private _age: number | null = null;
+
+  //Getter Func:To create a getter we use the get keyword
+  get age() {
+    if (this._age != null) {
+      return this._age;
+    }
+    throw new Error(`Age is not defined for the person ${this.name}`);
+  }
+  // To create a setter we use the Set Keyword
+  set age(value: number) {
+    if (value > 0) {
+      this._age = value;
+    } else {
+      throw new Error("Age cannot be a negative value");
+    }
+  }
+
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+//Instance
+const person = new Person("John");
+
+// Before Setter
+// console.log(person.age, "Getter");
+// After Setter
+person.age = 90;
+console.log(person.age, "Getter");
+
+// Computed Properties
+class Circle {
+  private _radius: number;
+
+  //Getter Method
+  get radius() {
+    return this._radius;
+  }
+  // Setter Method
+  set radius(value: number) {
+    this._radius = value;
+  }
+  // Get Diameter
+  get diameter() {
+    return this._radius * 2;
+  }
+  //Set Diameter
+  set diameter(val: number) {
+    this._radius = val / 2;
+  }
+  constructor(_radius: number) {
+    this._radius = _radius;
+  }
+}
