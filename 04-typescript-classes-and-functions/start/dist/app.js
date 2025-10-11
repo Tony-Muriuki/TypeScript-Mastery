@@ -292,6 +292,15 @@ var Personn = /** @class */ (function () {
 }());
 var person1 = Personn.getInstance();
 var person2 = Personn.getInstance();
-/***************************************************
- * ***********LECTURE 48: INTERFACE*****************
- ***************************************************/
+// Using an Interface as a Type
+var user4;
+user4 = {
+    firstName: "John",
+    lastName: "Smith",
+    greetUser: function () {
+        console.log("Hello user");
+    },
+    getFullName: function () {
+        return "".concat(this.firstName, " ").concat(this.lastName);
+    },
+};

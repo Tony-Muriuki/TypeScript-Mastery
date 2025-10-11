@@ -330,3 +330,23 @@ const person2 = Personn.getInstance();
 /***************************************************
  * ***********LECTURE 48: INTERFACE*****************
  ***************************************************/
+interface User1 {
+  firstName: string; //An interface property cannot have an initializer.ts(1246)
+  lastName: string;
+  //Method
+  greetUser(): void; //We can specify parameters if any will be needed
+  getFullName(): string;
+}
+
+// Using an Interface as a Type
+let user4: User1;
+user4 = {
+  firstName: "John",
+  lastName: "Smith",
+  greetUser() {
+    console.log("Hello user");
+  },
+  getFullName() {
+    return `${this.firstName} ${this.lastName}`;
+  },
+};
