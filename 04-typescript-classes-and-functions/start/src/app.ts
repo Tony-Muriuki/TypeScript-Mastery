@@ -235,4 +235,73 @@ class Circle {
 /***************************************************
  * ****LECTURE 45: STATIC METHODS & PROPERTIES******
  ***************************************************/
-class Employee3 {}
+//Instance properties are properties which we can access in the instance of a class but static properties are those properties which we can access on the class itself..--->Same is true for methods
+
+class Employee3 {
+  public firstName: string;
+  public lastName: string;
+  public static count: number = 0;
+  constructor(firstName: string, lastName: string) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    Employee3.count++;
+  }
+  //Methods
+  static sayHello() {
+    return `Hi There`;
+  }
+}
+const emp1 = new Employee3("John", "Smith");
+console.log(Employee3.count);
+const emp2 = new Employee3("John", "Smith");
+console.log(Employee3.count);
+const emp3 = new Employee3("John", "Smith");
+console.log(Employee3.count);
+
+console.log(Employee3.sayHello());
+
+// ABSTRACT CLASSES
+
+//You cannot create an instance of an abstract class
+// To create an abstract method you  need to define the class as an abstract
+abstract class Employee4 {
+  public firstName: string;
+  public lastName: string;
+  constructor(fn: string, ln: string) {
+    this.firstName = fn;
+    this.lastName = ln;
+  }
+  // Method GetSalary
+  abstract getSalary(): number;
+}
+
+class PermanentEmp extends Employee4 {
+  monthlySalary: number;
+  constructor(fn: string, ln: string, salary: number) {
+    super(fn, ln);
+    this.monthlySalary = salary;
+  }
+  getSalary(): number {
+    return this.monthlySalary * 12;
+  }
+}
+const permem1 = new PermanentEmp("John", "Smith", 1000);
+console.log(permem1.getSalary());
+
+class ContractEmployee extends Employee4 {
+  hourlySalary: number;
+  constructor(fn: string, ln: string, salary: number) {
+    super(fn, ln);
+    this.hourlySalary = salary;
+  }
+
+  getSalary(): number {
+    return this.hourlySalary * 9 * 365;
+  }
+}
+const contractemp1 = new ContractEmployee("John", "Doe", 10);
+console.log(contractemp1.getSalary());
+
+// Using Abstract we can define an abstract class which can contain some properties which will be common for all its child classes
+
+// An abstract class cannot be instantiated directly

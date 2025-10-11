@@ -211,8 +211,64 @@ var Circle = /** @class */ (function () {
 /***************************************************
  * ****LECTURE 45: STATIC METHODS & PROPERTIES******
  ***************************************************/
+//Instance properties are properties which we can access in the instance of a class but static properties are those properties which we can access on the class itself..--->Same is true for methods
 var Employee3 = /** @class */ (function () {
-    function Employee3() {
+    function Employee3(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        Employee3.count++;
     }
+    //Methods
+    Employee3.sayHello = function () {
+        return "Hi There";
+    };
+    Employee3.count = 0;
     return Employee3;
 }());
+var emp1 = new Employee3("John", "Smith");
+console.log(Employee3.count);
+var emp2 = new Employee3("John", "Smith");
+console.log(Employee3.count);
+var emp3 = new Employee3("John", "Smith");
+console.log(Employee3.count);
+console.log(Employee3.sayHello());
+// ABSTRACT CLASSES
+//You cannot create an instance of an abstract class
+// To create an abstract method you  need to define the class as an abstract
+var Employee4 = /** @class */ (function () {
+    function Employee4(fn, ln) {
+        this.firstName = fn;
+        this.lastName = ln;
+    }
+    return Employee4;
+}());
+var PermanentEmp = /** @class */ (function (_super) {
+    __extends(PermanentEmp, _super);
+    function PermanentEmp(fn, ln, salary) {
+        var _this = _super.call(this, fn, ln) || this;
+        _this.monthlySalary = salary;
+        return _this;
+    }
+    PermanentEmp.prototype.getSalary = function () {
+        return this.monthlySalary * 12;
+    };
+    return PermanentEmp;
+}(Employee4));
+var permem1 = new PermanentEmp("John", "Smith", 1000);
+console.log(permem1.getSalary());
+var ContractEmployee = /** @class */ (function (_super) {
+    __extends(ContractEmployee, _super);
+    function ContractEmployee(fn, ln, salary) {
+        var _this = _super.call(this, fn, ln) || this;
+        _this.hourlySalary = salary;
+        return _this;
+    }
+    ContractEmployee.prototype.getSalary = function () {
+        return this.hourlySalary * 9 * 365;
+    };
+    return ContractEmployee;
+}(Employee4));
+var contractemp1 = new ContractEmployee("John", "Doe", 10);
+console.log(contractemp1.getSalary());
+// Using Abstract we can define an abstract class which can contain some properties which will be common for all its child classes
+// An abstract class cannot be instantiated directly
