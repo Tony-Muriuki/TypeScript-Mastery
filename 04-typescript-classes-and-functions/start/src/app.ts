@@ -350,3 +350,45 @@ user4 = {
     return `${this.firstName} ${this.lastName}`;
   },
 };
+
+// Admin Class
+class Admin implements User1 {
+  age: number = 30;
+  constructor(public firstName: string, public lastName: string) {}
+
+  //GreetUser Method
+  greetUser() {
+    console.log(`Hello Admin: ${this.firstName}`);
+  }
+  //GetfullName Method
+  getFullName(): string {
+    return `${this.firstName} ${this.lastName}`;
+  }
+}
+
+// Member Class
+class Member implements User1 {
+  constructor(public firstName: string, public lastName: string) {}
+  //GreetUser Method
+  greetUser() {
+    console.log(`Hello Member: ${this.firstName}`);
+  }
+  // GetFullName Method
+  getFullName(): string {
+    return `${this.firstName} ${this.lastName}`;
+  }
+}
+
+//We want to use this function for displaying the greet message to the User
+
+function displayMessage(user: User1) {
+  user.greetUser();
+}
+
+//Instance
+const admin = new Admin("John", "Smith");
+const member = new Member("Mary", "Jane");
+
+//Passing Arguement
+displayMessage(admin);
+displayMessage(member);

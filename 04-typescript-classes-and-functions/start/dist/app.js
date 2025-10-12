@@ -292,7 +292,7 @@ var Personn = /** @class */ (function () {
 }());
 var person1 = Personn.getInstance();
 var person2 = Personn.getInstance();
-// Using an Interface as a Type
+// Using an Interfaces as a Type
 var user4;
 user4 = {
     firstName: "John",
@@ -304,3 +304,46 @@ user4 = {
         return "".concat(this.firstName, " ").concat(this.lastName);
     },
 };
+// Admin Class
+var Admin = /** @class */ (function () {
+    function Admin(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = 30;
+    }
+    //GreetUser Method
+    Admin.prototype.greetUser = function () {
+        console.log("Hello Admin: ".concat(this.firstName));
+    };
+    //GetfullName Method
+    Admin.prototype.getFullName = function () {
+        return "".concat(this.firstName, " ").concat(this.lastName);
+    };
+    return Admin;
+}());
+// Member Class
+var Member = /** @class */ (function () {
+    function Member(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+    //GreetUser Method
+    Member.prototype.greetUser = function () {
+        console.log("Hello Member: ".concat(this.firstName));
+    };
+    // GetFullName Method
+    Member.prototype.getFullName = function () {
+        return "".concat(this.firstName, " ").concat(this.lastName);
+    };
+    return Member;
+}());
+//We want to use this function for displaying the greet message to the User
+function displayMessage(user) {
+    user.greetUser();
+}
+//Instance
+var admin = new Admin("John", "Smith");
+var member = new Member("Mary", "Jane");
+//Passing Arguement
+displayMessage(admin);
+displayMessage(member);
