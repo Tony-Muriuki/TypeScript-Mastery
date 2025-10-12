@@ -338,7 +338,7 @@ interface User1 {
   getFullName(): string;
 }
 
-// Using an Interface as a Type
+// Using an Interfaces as a Type
 let user4: User1;
 user4 = {
   firstName: "John",
