@@ -297,6 +297,8 @@ var user4;
 user4 = {
     firstName: "John",
     lastName: "Smith",
+    company: "KFC",
+    location: "",
     greetUser: function () {
         console.log("Hello user");
     },
@@ -310,6 +312,7 @@ var Admin = /** @class */ (function () {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = 30;
+        this.company = "Google";
     }
     //GreetUser Method
     Admin.prototype.greetUser = function () {
@@ -323,9 +326,12 @@ var Admin = /** @class */ (function () {
 }());
 // Member Class
 var Member = /** @class */ (function () {
-    function Member(firstName, lastName) {
+    function Member(firstName, lastName, loc) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.company = "Google";
+        this.location = "London";
+        this.location = loc;
     }
     //GreetUser Method
     Member.prototype.greetUser = function () {
@@ -342,8 +348,13 @@ function displayMessage(user) {
     user.greetUser();
 }
 //Instance
-var admin = new Admin("John", "Smith");
+var admin;
+admin = new Admin("John", "Smith");
+// admin.company = "Microsoft"; Cannot assign to 'company' because it is a
 var member = new Member("Mary", "Jane");
 //Passing Arguement
 displayMessage(admin);
 displayMessage(member);
+/***************************************************
+ * **** READONLY PROPERTY AND OPTIONAL PROPERTY IN INTERFACE*******
+ ***************************************************/

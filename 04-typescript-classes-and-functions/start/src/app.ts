@@ -333,6 +333,8 @@ const person2 = Personn.getInstance();
 interface User1 {
   firstName: string; //An interface property cannot have an initializer.ts(1246)
   lastName: string;
+  readonly company: string;
+  location?: string;
   //Method
   greetUser(): void; //We can specify parameters if any will be needed
   getFullName(): string;
@@ -343,6 +345,8 @@ let user4: User1;
 user4 = {
   firstName: "John",
   lastName: "Smith",
+  company: "KFC",
+  location: "",
   greetUser() {
     console.log("Hello user");
   },
@@ -354,6 +358,7 @@ user4 = {
 // Admin Class
 class Admin implements User1 {
   age: number = 30;
+  company: string = "Google";
   constructor(public firstName: string, public lastName: string) {}
 
   //GreetUser Method
@@ -368,7 +373,11 @@ class Admin implements User1 {
 
 // Member Class
 class Member implements User1 {
-  constructor(public firstName: string, public lastName: string) {}
+  company: string = "Google";
+  location?: string | undefined = "London";
+  constructor(public firstName: string, public lastName: string, loc?: string) {
+    this.location = loc;
+  }
   //GreetUser Method
   greetUser() {
     console.log(`Hello Member: ${this.firstName}`);
@@ -386,9 +395,15 @@ function displayMessage(user: User1) {
 }
 
 //Instance
-const admin = new Admin("John", "Smith");
+let admin: User1;
+admin = new Admin("John", "Smith");
+// admin.company = "Microsoft"; Cannot assign to 'company' because it is a
 const member = new Member("Mary", "Jane");
 
 //Passing Arguement
 displayMessage(admin);
 displayMessage(member);
+
+/***************************************************
+ * **** READONLY PROPERTY AND OPTIONAL PROPERTY IN INTERFACE*******
+ ***************************************************/
