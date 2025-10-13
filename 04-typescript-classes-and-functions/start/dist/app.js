@@ -305,6 +305,9 @@ user4 = {
     getFullName: function () {
         return "".concat(this.firstName, " ").concat(this.lastName);
     },
+    getRoles: function () {
+        return "Type";
+    },
 };
 // Admin Class
 var Admin = /** @class */ (function () {
@@ -321,6 +324,10 @@ var Admin = /** @class */ (function () {
     //GetfullName Method
     Admin.prototype.getFullName = function () {
         return "".concat(this.firstName, " ").concat(this.lastName);
+    };
+    //Get Role Method
+    Admin.prototype.getRoles = function () {
+        return "admin";
     };
     return Admin;
 }());
@@ -341,6 +348,9 @@ var Member = /** @class */ (function () {
     Member.prototype.getFullName = function () {
         return "".concat(this.firstName, " ").concat(this.lastName);
     };
+    Member.prototype.getRoles = function () {
+        return "member";
+    };
     return Member;
 }());
 //We want to use this function for displaying the greet message to the User
@@ -350,11 +360,10 @@ function displayMessage(user) {
 //Instance
 var admin;
 admin = new Admin("John", "Smith");
+console.log(admin.getRoles(), "Role");
 // admin.company = "Microsoft"; Cannot assign to 'company' because it is a
 var member = new Member("Mary", "Jane");
+console.log(member.getRoles(), "Role");
 //Passing Arguement
 displayMessage(admin);
 displayMessage(member);
-/***************************************************
- * **** READONLY PROPERTY AND OPTIONAL PROPERTY IN INTERFACE*******
- ***************************************************/

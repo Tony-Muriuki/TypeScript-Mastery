@@ -330,7 +330,12 @@ const person2 = Personn.getInstance();
 /***************************************************
  * ***********LECTURE 48: INTERFACE*****************
  ***************************************************/
-interface User1 {
+
+//Roles Interface
+interface Roles {
+  getRoles(): string;
+}
+interface User1 extends Roles {
   firstName: string; //An interface property cannot have an initializer.ts(1246)
   lastName: string;
   readonly company: string;
@@ -353,6 +358,9 @@ user4 = {
   getFullName() {
     return `${this.firstName} ${this.lastName}`;
   },
+  getRoles(): string {
+    return "Type";
+  },
 };
 
 // Admin Class
@@ -368,6 +376,11 @@ class Admin implements User1 {
   //GetfullName Method
   getFullName(): string {
     return `${this.firstName} ${this.lastName}`;
+  }
+
+  //Get Role Method
+  getRoles(): string {
+    return "admin";
   }
 }
 
@@ -386,6 +399,10 @@ class Member implements User1 {
   getFullName(): string {
     return `${this.firstName} ${this.lastName}`;
   }
+
+  getRoles(): string {
+    return "member";
+  }
 }
 
 //We want to use this function for displaying the greet message to the User
@@ -397,13 +414,11 @@ function displayMessage(user: User1) {
 //Instance
 let admin: User1;
 admin = new Admin("John", "Smith");
+console.log(admin.getRoles(), "Role");
 // admin.company = "Microsoft"; Cannot assign to 'company' because it is a
 const member = new Member("Mary", "Jane");
+console.log(member.getRoles(), "Role");
 
 //Passing Arguement
 displayMessage(admin);
 displayMessage(member);
-
-/***************************************************
- * **** READONLY PROPERTY AND OPTIONAL PROPERTY IN INTERFACE*******
- ***************************************************/
