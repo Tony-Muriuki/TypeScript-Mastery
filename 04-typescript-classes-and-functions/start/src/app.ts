@@ -422,3 +422,17 @@ console.log(member.getRoles(), "Role");
 //Passing Arguement
 displayMessage(admin);
 displayMessage(member);
+
+/***************************************************
+ * ****LECTURE 51: INTERFACE AS FUNCTION TYPE*******
+ ***************************************************/
+type SumFnn = (num1: number, num2: number) => number;
+interface SumFn {
+  (num1: number, num2: number): number;
+}
+
+let add: SumFn;
+
+add = (n1: number, n2: number) => {
+  return n1 + n2;
+};

@@ -367,3 +367,7 @@ console.log(member.getRoles(), "Role");
 //Passing Arguement
 displayMessage(admin);
 displayMessage(member);
+var add;
+add = function (n1, n2) {
+    return n1 + n2;
+};
