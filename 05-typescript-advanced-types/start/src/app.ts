@@ -149,3 +149,7 @@ console.log(calcArea({ kind: "circle", radius: 12 }));
 /***********************************************
  * *****TYPE CASTING IN TYPESCRIPT**************
  ***********************************************/
+
+// Type casting basically allows you to explicitly tell the compier to treat a variable as a different type
+let fname = <HTMLInputElement>document.querySelector("#fname")!;
+fname.value;
