@@ -42,3 +42,75 @@ interface Order {
 }
 
 processOrder({ id: 123, items: ["item1", "item2"], status: "shipped" });
+
+/***********************************************
+ * *****TYPE GUARDS IN TYPESCRIPT***************
+ ***********************************************/
+
+// In typescript type guards are a powerful mechanism that allows you to refine the type of a variable based on  runtime checks
+// This enhances code reliability and maintainability by providing more precise type information to the compiler.
+// Type guards are expressions that typically  return a boolean value or the variable itself cast to a more specific type.
+
+// Number or String Type
+type stringOrNumber = string | number;
+
+// Addition Function typeof typeguard
+function addition(a: stringOrNumber, b: stringOrNumber) {
+  if (typeof a == "string" || typeof b == "string") {
+    return a.toString() + b.toString();
+  }
+  return a + b;
+}
+
+//Invoking Function
+addition("Hello", "World");
+addition(20, 30);
+addition("Hello", 30);
+
+// TypeGuard With Complex Types
+class Animal {
+  makeSound() {
+    console.log("Generic Animal Sound");
+  }
+}
+
+// Dog Class
+class Dog extends Animal {
+  bark() {
+    console.log("Woof!Woof!");
+  }
+}
+// Function instanceof typeguard
+function makeCreatureSound(creature: Animal) {
+  if (creature instanceof Dog) {
+    creature.bark();
+  } else {
+    creature.makeSound();
+  }
+}
+
+//Class Instances
+let animal = new Animal();
+let dog = new Dog();
+
+// Invoking Function
+makeCreatureSound(animal); //Here we can pass an instance of animal class or Dog Class
+makeCreatureSound(dog);
+
+// User Interface
+interface User {
+  name: string;
+  email?: string;
+}
+
+// greetUser Func
+function greetUser(user: User) {
+  if ("email" in user) {
+    //If email property exists in user console.log(`Hello ${user.name} your email is ${user.email}`)
+    console.log(`Hello ${user.name} your email is ${user.email}`);
+  } //Print only userName
+  else console.log(`Hello ${user.name}}`);
+}
+
+greetUser({ name: "John" });
+greetUser({ name: "Mark", email: "mark@gmail.com" });
