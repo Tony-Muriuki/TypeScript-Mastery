@@ -184,6 +184,12 @@ const numkart = new ShoppingKart();
 numkart.addItem(200);
 numkart.addItem(300);
 console.log(numkart.getItems());
+// Function:In this function will simply update the value for darkmode and language
+function updateUserSettings(partialsettings) {
+    // Partial<T> takes a type T and makes all its properties optional.
+    // It’s useful when you only want to update some fields of an object, not all.
+    console.log("Updating :", partialsettings);
+}
 // Object User
 const user = {
     userName: "johnsmith",
@@ -191,3 +197,14 @@ const user = {
     darkMode: false,
     language: "en",
 };
+// Variable
+const newSettings = {
+    darkMode: true,
+    language: "fr",
+};
+// invoke{}
+updateUserSettings(newSettings);
+// Readonly<T> takes a type T and makes all its properties read-only, so they can’t be changed after assignment.
+let arr = new Array("John", "Mark");
+// arr.push("Mary");Property 'push' does not exist on type 'readonly string[]'.ts(2339)
+console.log(arr);

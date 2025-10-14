@@ -290,11 +290,30 @@ interface UserSettings {
   darkMode: boolean;
   language: string;
 }
+// Function:In this function will simply update the value for darkmode and language
+function updateUserSettings(partialsettings: Partial<UserSettings>) {
+  // Partial<T> takes a type T and makes all its properties optional.
+  // It’s useful when you only want to update some fields of an object, not all.
+  console.log("Updating :", partialsettings);
+}
 
 // Object User
-const user: UserSettings = {
+const user: Readonly<UserSettings> = {
   userName: "johnsmith",
   email: "johnsmith@gmail.com",
   darkMode: false,
   language: "en",
 };
+
+// Variable
+const newSettings = {
+  darkMode: true,
+  language: "fr",
+};
+// invoke{}
+updateUserSettings(newSettings);
+
+// Readonly<T> takes a type T and makes all its properties read-only, so they can’t be changed after assignment.
+let arr: Readonly<string[]> = new Array("John", "Mark");
+// arr.push("Mary");Property 'push' does not exist on type 'readonly string[]'.ts(2339)
+console.log(arr);
