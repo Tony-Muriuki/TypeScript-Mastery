@@ -284,3 +284,17 @@ console.log(numkart.getItems());
 /***********************************************
  * *****PARTIAL & READ ONLY GENERICS************
  ***********************************************/
+interface UserSettings {
+  userName: string;
+  email: string;
+  darkMode: boolean;
+  language: string;
+}
+
+// Object User
+const user: UserSettings = {
+  userName: "johnsmith",
+  email: "johnsmith@gmail.com",
+  darkMode: false,
+  language: "en",
+};

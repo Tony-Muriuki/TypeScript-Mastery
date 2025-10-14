@@ -184,6 +184,10 @@ const numkart = new ShoppingKart();
 numkart.addItem(200);
 numkart.addItem(300);
 console.log(numkart.getItems());
-/***********************************************
- * *****PARTIAL & READ ONLY GENERICS************
- ***********************************************/
+// Object User
+const user = {
+    userName: "johnsmith",
+    email: "johnsmith@gmail.com",
+    darkMode: false,
+    language: "en",
+};
