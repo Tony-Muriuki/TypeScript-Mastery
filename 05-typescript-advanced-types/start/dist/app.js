@@ -136,3 +136,22 @@ function getPropValue(obj, key) {
 }
 //Invoke Function
 getPropValue({ name: "John", age: 28 }, "name");
+// Class ShoppinCart
+class ShoppingCart {
+    constructor() {
+        this.items = [];
+    }
+    //Method
+    addItem(item) {
+        this.items.push(item);
+    }
+    // Get Items Methods:return all items in the items array
+    getItems() {
+        return this.items;
+    }
+}
+// Instance
+const bookCart = new ShoppingCart();
+bookCart.addItem({ name: "A Book", pages: 225, price: 20 });
+bookCart.addItem({ name: "Another Book", pages: 250, price: 25 });
+console.log(bookCart.getItems());

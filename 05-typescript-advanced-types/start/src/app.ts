@@ -211,3 +211,39 @@ function getPropValue<T extends object, U extends keyof T>(obj: T, key: U) {
 }
 //Invoke Function
 getPropValue({ name: "John", age: 28 }, "name");
+
+/***********************************************
+ * *****CREATING A GENERIC CLASS****************
+ ***********************************************/
+// Book Class
+type Book = {
+  name: string;
+  pages: number;
+  price: number;
+};
+// Cloth Class
+type Cloth = {
+  name: string;
+  size: string;
+  price: number;
+};
+
+// Class ShoppinCart
+class ShoppingCart<T> {
+  private items: T[] = [];
+
+  //Method
+  addItem(item: T) {
+    this.items.push(item);
+  }
+  // Get Items Methods:return all items in the items array
+  getItems() {
+    return this.items;
+  }
+}
+
+// Instance
+const bookCart = new ShoppingCart<Book>();
+bookCart.addItem({ name: "A Book", pages: 225, price: 20 });
+bookCart.addItem({ name: "Another Book", pages: 250, price: 25 });
+console.log(bookCart.getItems());
