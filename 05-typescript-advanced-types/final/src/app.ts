@@ -38,8 +38,6 @@ interface Order{
 processOrder({id: 123, items: ['item1', 'item2'], status: 'shiped'})
 */
 
-
-
 /***********************************************
  * *****TYPE GUARDS IN TYPESCRIPT***************
  ***********************************************/
@@ -102,9 +100,6 @@ greetUser({name: 'john'});
 greetUser({name: 'mark', email: 'mark@gmail.com'});
 */
 
-
-
-
 /***********************************************
  * *****DISCRIMINATED UNION*********************
  ***********************************************/
@@ -133,17 +128,14 @@ console.log(calcArea({kind: 'square', length: 12}))
 console.log(calcArea({kind: 'circle',radius: 12}))
 */
 
-
-
 /***********************************************
  * *****TYPE CASTING IN TYPESCRIPT**************
  ***********************************************/
-// let fname = <HTMLInputElement>document.querySelector('#fname')!;
-/*let fname = document.querySelector('#fname');
-if(fname){
-    (fname as HTMLInputElement).value = 'John'
-}*/
-
+// // let fname = <HTMLInputElement>document.querySelector('#fname')!;
+// /*let fname = document.querySelector('#fname');
+// if(fname){
+//     (fname as HTMLInputElement).value = 'John'
+// }*/
 
 /***********************************************
  * *****INDEX PROPERTIES************************
@@ -188,7 +180,6 @@ const users: User[] = [
     {name: 'Mark', interests: ['music', 'sports'], location: 'london'}
 ]*/
 
-
 /***********************************************
  * *****FUNCTION OVERLOADING********************
  ***********************************************/
@@ -209,8 +200,6 @@ addition('Hello', 'World').split(',');
 addition(10, 20);
 */
 
-
-
 /***********************************************
  * *****WHAT ARE GENERICS***********************
  ***********************************************/
@@ -226,8 +215,6 @@ const p: Promise<number> = new Promise((resolve, reject) => {
         resolve(100);
     }, 1000)
 });*/
-
-
 
 /***********************************************
  * *****CREATING A GENERIC FUNCTION*************
@@ -256,8 +243,6 @@ let combined = expand({name: 'john', age: 28}, {name: 'john', gender: 'male'});
 console.log(combined);
 */
 
-
-
 /***********************************************
  * *****THE KEYOF CONSTRAINT********************
  ***********************************************/
@@ -267,8 +252,6 @@ console.log(combined);
 
 getPropValue({name: 'john', age: 28}, 'age');
 */
-
-
 
 /***********************************************
  * *****CREATING A GENERIC CLASS****************
@@ -311,8 +294,6 @@ strkart.addItem('World');
 console.log(strkart.getItems())
 */
 
-
-
 /***********************************************
  * *****GENERIC TYPE VS UNION TYPE**************
  ***********************************************/
@@ -338,9 +319,6 @@ numkart.addItem(200);
 numkart.addItem(300);
 console.log(numkart.getItems())
 */
-
-
-
 
 /***********************************************
  * *****PARTIAL & READ ONLY GENERICS************
