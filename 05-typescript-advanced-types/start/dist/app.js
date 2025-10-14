@@ -158,7 +158,32 @@ console.log(bookCart.getItems());
 const clothCart = new ShoppingCart();
 clothCart.addItem({ name: "T-Shirt", size: "M", price: 225 });
 console.log(clothCart.getItems());
-const strkart = new ShoppingCart();
+const strkartt = new ShoppingCart();
+strkartt.addItem("Hello");
+strkartt.addItem("World");
+console.log(strkartt.getItems());
+/***********************************************
+ * *****GENERIC TYPE VS UNION TYPE**************
+ ***********************************************/
+class ShoppingKart {
+    constructor() {
+        this.items = [];
+    }
+    addItem(item) {
+        this.items.push(item);
+    }
+    getItems() {
+        return this.items;
+    }
+}
+const strkart = new ShoppingKart();
 strkart.addItem("Hello");
 strkart.addItem("World");
 console.log(strkart.getItems());
+const numkart = new ShoppingKart();
+numkart.addItem(200);
+numkart.addItem(300);
+console.log(numkart.getItems());
+/***********************************************
+ * *****PARTIAL & READ ONLY GENERICS************
+ ***********************************************/
