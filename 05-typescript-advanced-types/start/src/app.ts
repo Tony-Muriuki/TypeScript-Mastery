@@ -153,3 +153,52 @@ console.log(calcArea({ kind: "circle", radius: 12 }));
 // Type casting basically allows you to explicitly tell the compier to treat a variable as a different type
 let fname = <HTMLInputElement>document.querySelector("#fname")!;
 fname.value;
+
+/***********************************************
+ * *****WHAT ARE GENERICS***********************
+ ***********************************************/
+// // Swap Function
+// function swap<T>(arr: T[], index1: number, index2: number): T[] {
+//   // Swapping Logic: Swapping the number at index 1 with the one at two
+
+//   return [];
+// }
+// Invoke
+// swap([1, 2, 3], 0, 3);
+// swap(["Hello", "Hi", "How are you"], 1, 2);
+
+const num: Array<number> = [10, 20, 30];
+
+// Promise
+const p: Promise<number> = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve(100);
+  }, 1000);
+});
+
+/***********************************************
+ * *****CREATING A GENERIC FUNCTION*************
+ ***********************************************/
+// Swap Function
+function swap<T>(arr: T[], index1: number, index2: number): T[] {
+  // Swapping Logic: Swapping the number at index 1 with the one at two
+  if (index1 < 0 || index1 > arr.length || index2 < 0 || index2 > arr.length) {
+    throw new Error("Invalid index");
+  }
+
+  return ([arr[index1], arr[index2]] = [arr[index2], arr[index1]]);
+}
+console.log(swap([1, 2, 3], 0, 2));
+console.log(swap(["Hello", "Hi", "How are you"], 1, 2));
+
+//All we are going to do from this object is we are going to merge object 1 with object 2
+function expand<T extends object, U extends object>(obj1: T, obj2: U) {
+  return Object.assign(obj1, obj2);
+}
+//Invoke Expand Function
+let combined = expand(
+  { name: "John", age: 28 },
+  { name: "John", gender: "male" }
+);
+console.log(combined);
+// Here we are settinng constraints on the generics that they should accept only object types <T extends object, U extends object>
