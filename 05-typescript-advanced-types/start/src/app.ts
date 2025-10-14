@@ -247,3 +247,12 @@ const bookCart = new ShoppingCart<Book>();
 bookCart.addItem({ name: "A Book", pages: 225, price: 20 });
 bookCart.addItem({ name: "Another Book", pages: 250, price: 25 });
 console.log(bookCart.getItems());
+
+const clothCart = new ShoppingCart<Cloth>();
+clothCart.addItem({ name: "T-Shirt", size: "M", price: 225 });
+console.log(clothCart.getItems());
+
+const strkart = new ShoppingCart<string>();
+strkart.addItem("Hello");
+strkart.addItem("World");
+console.log(strkart.getItems());
