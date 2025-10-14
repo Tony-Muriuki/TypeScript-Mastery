@@ -202,3 +202,12 @@ let combined = expand(
 );
 console.log(combined);
 // Here we are settinng constraints on the generics that they should accept only object types <T extends object, U extends object>
+
+/***********************************************
+ * *****THE KEYOF CONSTRAINT********************
+ ***********************************************/
+function getPropValue<T extends object, U extends keyof T>(obj: T, key: U) {
+  return obj[key];
+}
+//Invoke Function
+getPropValue({ name: "John", age: 28 }, "name");

@@ -128,3 +128,11 @@ function expand(obj1, obj2) {
 let combined = expand({ name: "John", age: 28 }, { name: "John", gender: "male" });
 console.log(combined);
 // Here we are settinng constraints on the generics that they should accept only object types <T extends object, U extends object>
+/***********************************************
+ * *****THE KEYOF CONSTRAINT********************
+ ***********************************************/
+function getPropValue(obj, key) {
+    return obj[key];
+}
+//Invoke Function
+getPropValue({ name: "John", age: 28 }, "name");
