@@ -24,7 +24,7 @@ function processOrder(order) {
 processOrder({ id: 123, items: ["item1", "item2"], status: "shipped" });
 // Addition Function typeof typeguard
 function addition(a, b) {
-    if (typeof a == "string" || typeof b == "string") {
+    if (typeof a === "string" || typeof b === "string") {
         return a.toString() + b.toString();
     }
     return a + b;
@@ -71,3 +71,18 @@ function greetUser(user) {
 }
 greetUser({ name: "John" });
 greetUser({ name: "Mark", email: "mark@gmail.com" });
+// Function
+function calcArea(shape) {
+    switch (shape.kind) {
+        case "circle":
+            return 3.14 * shape.radius * shape.radius;
+        case "square":
+            return shape.length * shape.length;
+    }
+}
+// Invoke
+console.log(calcArea({ kind: "square", length: 12 }));
+console.log(calcArea({ kind: "circle", radius: 12 }));
+/***********************************************
+ * *****TYPE CASTING IN TYPESCRIPT**************
+ ***********************************************/
