@@ -209,3 +209,50 @@ __decorate([
 // Instantiate
 const p = new Person("John");
 p.calculateAge("06-15-1998");
+/***********************************************
+ * *****WHEN A DECORATOR EXECUTES***************
+ ***********************************************/
+/*
+Execution Order:
+
+Parameter decorators → left to right: @G, then @H
+
+Method decorators → top to bottom: @E, then @F
+
+Property decorators → top to bottom: @C, then @D
+
+Class decorators → bottom to top: @B, then @A*/
+function CLS_DECORATOR(target) {
+    console.log("CLASS DECORATOR CALLED!");
+}
+function PROP_DECORATOR(target, propertyKey) {
+    console.log("PROPERTY DECORATOR CALLED!");
+}
+function ACC_DECORATOR(target, name, descriptor) {
+    console.log("ACCESSOR DECORATOR CALLED");
+}
+function PARAM_DECORATOR(target, paramName, index) {
+    console.log("PARAMETER DECORATOR CALLED");
+}
+function METH_DECORATOR(target, methodName, descriptor) {
+    console.log("METHOD DECORATOR CALLED!");
+}
+let Personn = class Personn {
+    constructor(n) {
+        this.name = n;
+    }
+    calculateAge(dob) {
+        //calculate date of birth;
+    }
+};
+__decorate([
+    PROP_DECORATOR //property decorator
+], Personn.prototype, "name", void 0);
+__decorate([
+    METH_DECORATOR //method decorator
+    ,
+    __param(0, PARAM_DECORATOR)
+], Personn.prototype, "calculateAge", null);
+Personn = __decorate([
+    CLS_DECORATOR //class Decorator
+], Personn);
