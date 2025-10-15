@@ -287,7 +287,10 @@ class Personn {
 /***********************************************
  * *****RETURNING A CLASS FROM A DECORATOR *****
  ***********************************************/
-
+function Logerr(target: Function) {
+  console.log(target);
+}
+@Logerr
 class Personnn {
   public name: string;
 

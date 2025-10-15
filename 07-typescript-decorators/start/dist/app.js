@@ -259,8 +259,14 @@ Personn = __decorate([
 /***********************************************
  * *****RETURNING A CLASS FROM A DECORATOR *****
  ***********************************************/
-class Personnn {
+function Logerr(target) {
+    console.log(target);
+}
+let Personnn = class Personnn {
     constructor(n) {
         this.name = n;
     }
-}
+};
+Personnn = __decorate([
+    Logerr
+], Personnn);
