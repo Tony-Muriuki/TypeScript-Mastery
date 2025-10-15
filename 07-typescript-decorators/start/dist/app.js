@@ -26,6 +26,41 @@ function loggerDecorator(logMsg) {
     }
     return logger;
 }
+//Creating Another Decorator
+function template(template, elementId) {
+    return function (target) {
+        // The target is doing a reference to the user class
+        const u = new target();
+        // Acces the element
+        const container = document.getElementById(elementId);
+        if (container) {
+            container.innerHTML = template;
+            const h2 = container.querySelector("h2");
+            if (h2) {
+                h2.textContent = "Hello Mr. " + u.name;
+            }
+        }
+    };
+}
+/*How It Works
+
+The decorator factory (Template) takes parameters:
+
+template → HTML content to render.
+
+elementId → ID of the DOM element to target.
+
+It returns a decorator function, which:
+
+Gets a reference to the target class (User).
+
+Creates an instance of that class.
+
+Locates the target DOM element by ID.
+
+Inserts the given HTML template.
+
+Updates any inner elements (like <h2>) dynamically using data from the class instance*/
 let User = class User {
     constructor() {
         this.name = "John";
