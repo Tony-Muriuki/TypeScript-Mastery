@@ -64,7 +64,7 @@ Updates any inner elements (like <h2>) dynamically using data from the class ins
 
 @loggerDecorator("This is custom Logger...")
 @template("<h2>Dynamic Header</h2>", "container")
-class User {
+class Userr {
   name: string = "John";
   age: number = 28;
   constructor() {
@@ -314,3 +314,16 @@ console.log(wp);
 /***********************************************
  * *****CREATING A VALIDATION DECORATOR*** *****
  ***********************************************/
+
+// User Class
+class User {
+  userName: string;
+  age: number;
+
+  constructor(uname: string, age: number) {
+    this.userName = uname;
+    this.age = age;
+  }
+}
+// Instantiate
+const u1 = new User("John", 28);

@@ -64,17 +64,17 @@ Locates the target DOM element by ID.
 Inserts the given HTML template.
 
 Updates any inner elements (like <h2>) dynamically using data from the class instance*/
-let User = class User {
+let Userr = class Userr {
     constructor() {
         this.name = "John";
         this.age = 28;
         console.log("User Class Constructor Called.....");
     }
 };
-User = __decorate([
+Userr = __decorate([
     loggerDecorator("This is custom Logger..."),
     template("<h2>Dynamic Header</h2>", "container")
-], User);
+], Userr);
 // const u = new User();
 /***********************************************
  * *****USING MULTIPLE DECORATORS**********************
@@ -283,3 +283,12 @@ console.log(wp);
 /***********************************************
  * *****CREATING A VALIDATION DECORATOR*** *****
  ***********************************************/
+// User Class
+class User {
+    constructor(uname, age) {
+        this.userName = uname;
+        this.age = age;
+    }
+}
+// Instantiate
+const u1 = new User("John", 28);
