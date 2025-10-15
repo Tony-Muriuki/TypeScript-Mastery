@@ -316,7 +316,12 @@ console.log(wp);
  ***********************************************/
 
 // Required decorator
-function required(target: any, propertyKey: string) {}
+function required(target: any, propName: string) {
+  validateObject[target.constructor.name] = {
+    ...validateObject[target.constructor.name],
+    [propName]: ["required"],
+  };
+}
 
 // minLength Decorator Factory Function
 function minLength(length: number) {

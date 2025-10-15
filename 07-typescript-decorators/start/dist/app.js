@@ -284,7 +284,9 @@ console.log(wp);
  * *****CREATING A VALIDATION DECORATOR*** *****
  ***********************************************/
 // Required decorator
-function required(target, propertyKey) { }
+function required(target, propName) {
+    validateObject[target.constructor.name] = Object.assign(Object.assign({}, validateObject[target.constructor.name]), { [propName]: ["required"] });
+}
 // minLength Decorator Factory Function
 function minLength(length) {
     return function (target, propertyKey) { };
