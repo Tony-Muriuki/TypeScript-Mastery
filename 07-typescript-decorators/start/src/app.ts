@@ -287,3 +287,11 @@ class Personn {
 /***********************************************
  * *****RETURNING A CLASS FROM A DECORATOR *****
  ***********************************************/
+
+class Personnn {
+  public name: string;
+
+  constructor(n: string) {
+    this.name = n;
+  }
+}

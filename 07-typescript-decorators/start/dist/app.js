@@ -259,3 +259,8 @@ Personn = __decorate([
 /***********************************************
  * *****RETURNING A CLASS FROM A DECORATOR *****
  ***********************************************/
+class Personnn {
+    constructor(n) {
+        this.name = n;
+    }
+}
