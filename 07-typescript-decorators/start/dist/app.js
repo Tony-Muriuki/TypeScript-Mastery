@@ -69,6 +69,106 @@ let User = class User {
     }
 };
 User = __decorate([
-    loggerDecorator("This is custom logger")
+    loggerDecorator("This is custom Logger..."),
+    template("<h2>Dynamic Header</h2>", "container")
 ], User);
 // const u = new User();
+/***********************************************
+ * *****USING MULTIPLE DECORATORS**********************
+ ***********************************************/
+function ResultDecor() {
+    console.log("Result Decorator Factory");
+    return function (constructor) {
+        console.log("Rseult Decorator");
+    };
+}
+function DecorFactory() {
+    console.log("DecorFactory Decorator Factory");
+    return function (constructor) {
+        console.log("DecorFactory Decorator");
+    };
+}
+let Factory = class Factory {
+    constructor() { }
+};
+Factory = __decorate([
+    ResultDecor(),
+    DecorFactory()
+], Factory);
+/*Factories run top → bottom.
+
+Decorators run bottom → top.
+
+Useful when combining multiple decorators for flexible, layered behavior.*/
+/***********************************************
+ * *****PROPERTY DECORATOR**********************
+ ***********************************************/
+function Capitalize(target, propertyKey) {
+    console.log("CAPITALIZE DECORATOR CALLED");
+    console.log("PROPERTY KEY:", propertyKey);
+    console.log("TARGET:", target);
+    let value;
+    const getter = () => value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
+    const setter = (newValue) => {
+        value = newValue.toLowerCase();
+    };
+    return {
+        get: getter,
+        set: setter,
+    };
+    // Object.defineProperty(target, propertyKey, {
+    //   get: getter,
+    //   set: setter,
+    // });
+}
+// Decorator Function
+function AccessLogger(target, name, descriptor) {
+    console.log("AccessLogger Decorator Called");
+    // Getter Variable
+    const getter = descriptor.get;
+    // Setter Variable
+    const setter = descriptor.set;
+    descriptor.get = function () {
+        console.log(`Accessing Value for Property ${name}....`);
+        if (getter) {
+            return getter.call(this);
+        }
+        return undefined;
+    };
+    descriptor.set = function (value) {
+        console.log(`Setting Value for Property ${name}....`);
+        if (setter) {
+            return setter.call(this, value);
+        }
+    };
+    return descriptor;
+}
+// Product Class
+class Product {
+    constructor(name, price) {
+        this.name = name;
+        this._price = price;
+    }
+    // Get Price
+    get price() {
+        return this._price;
+    }
+    // Set Price
+    set Price(value) {
+        if (value > 0) {
+            this._price = value;
+        }
+        else {
+            throw new Error("Price should be a value greater Than 0");
+        }
+    }
+}
+__decorate([
+    Capitalize
+], Product.prototype, "name", void 0);
+__decorate([
+    AccessLogger
+], Product.prototype, "price", null);
+const p = new Product("apple", 2400);
+// p._price = 3000;
+console.log(p.price);
