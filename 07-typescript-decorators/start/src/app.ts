@@ -180,6 +180,48 @@ class Product {
     }
   }
 }
-const p = new Product("apple", 2400);
+const p2 = new Product("apple", 2400);
 // p._price = 3000;
-console.log(p.price);
+console.log(p2.price);
+
+/***********************************************
+ * *****METHOD AND PARAMETER DECORATORS*********
+ ***********************************************/
+// Whenever we create a decorator to use on a parameter it expects 3 arguements target(prototype object or constructor function) ,parameter name on which we have used the decorator, index of the parameter . In the claculate age method the parameter dob is at index 0 of the method
+
+// @Param Decorator
+function param(target: any, paramName: string, index: number) {
+  console.log("PARAM DECORATOR CALLED");
+  console.log("TARGET:", target);
+  console.log("PARAMETER NAME:", paramName);
+  console.log("INDEX PARAMETER:", index);
+}
+
+// @Logger Decorater
+// When we create a decorator to use on a class method its going to receive 3 arguements first is the target which is the class prototype or constructor function,methodName: The method on which weve used the decorator thirdly is the descriptor which will be of type property Descriptor
+// Incase of static method the target will point to the function constructor basically the class inside which we have defined the method but if the method is of instance target will point to the function prototype
+function Logger(
+  target: any,
+  methodName: string,
+  descriptor: PropertyDescriptor
+) {
+  console.log("Method Decorator Called!");
+  console.log("Target:", target);
+  console.log("Method name:", methodName);
+  console.log("Descriptor:", descriptor);
+}
+class Person {
+  name: string;
+
+  constructor(n: string) {
+    this.name = n;
+  }
+
+  // Method Calculate age
+  @Logger
+  calculateAge(@param dob: string) {}
+}
+
+// Instantiate
+const p = new Person("John");
+p.calculateAge("06-15-1998");

@@ -8,6 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 // Decorators are powerful syntactic feature in Typescript that allows you to add functionality or modify the behaviour of classes , methods and  properties at runtime.
 // Decorators are essentially functions that are applied using the @ symbol before the declarationn you want to decorate
 // Decorator function is simply a function that returns a decorator function
@@ -169,6 +172,40 @@ __decorate([
 __decorate([
     AccessLogger
 ], Product.prototype, "price", null);
-const p = new Product("apple", 2400);
+const p2 = new Product("apple", 2400);
 // p._price = 3000;
-console.log(p.price);
+console.log(p2.price);
+/***********************************************
+ * *****METHOD AND PARAMETER DECORATORS*********
+ ***********************************************/
+// Whenever we create a decorator to use on a parameter it expects 3 arguements target(prototype object or constructor function) ,parameter name on which we have used the decorator, index of the parameter . In the claculate age method the parameter dob is at index 0 of the method
+// @Param Decorator
+function param(target, paramName, index) {
+    console.log("PARAM DECORATOR CALLED");
+    console.log("TARGET:", target);
+    console.log("PARAMETER NAME:", paramName);
+    console.log("INDEX PARAMETER:", index);
+}
+// @Logger Decorater
+// When we create a decorator to use on a class method its going to receive 3 arguements first is the target which is the class prototype or constructor function,methodName: The method on which weve used the decorator thirdly is the descriptor which will be of type property Descriptor
+// Incase of static method the target will point to the function constructor basically the class inside which we have defined the method but if the method is of instance target will point to the function prototype
+function Logger(target, methodName, descriptor) {
+    console.log("Method Decorator Called!");
+    console.log("Target:", target);
+    console.log("Method name:", methodName);
+    console.log("Descriptor:", descriptor);
+}
+class Person {
+    constructor(n) {
+        this.name = n;
+    }
+    // Method Calculate age
+    calculateAge(dob) { }
+}
+__decorate([
+    Logger,
+    __param(0, param)
+], Person.prototype, "calculateAge", null);
+// Instantiate
+const p = new Person("John");
+p.calculateAge("06-15-1998");
