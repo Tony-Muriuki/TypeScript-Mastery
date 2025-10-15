@@ -287,14 +287,26 @@ class Personn {
 /***********************************************
  * *****RETURNING A CLASS FROM A DECORATOR *****
  ***********************************************/
-function Logerr(target: Function) {
-  console.log(target);
+// for the target
+function Loger(target: new (...args: any[]) => {}): any {
+  class LoggingClass extends target {
+    static company: string = "Google";
+    constructor(...args: any[]) {
+      super(...args);
+      console.log("Creating a new LoggingClass Instance...");
+    }
+  }
+
+  return LoggingClass;
 }
-@Logerr
+@Loger
 class Personnn {
-  public name: string;
+  name: string;
 
   constructor(n: string) {
     this.name = n;
   }
 }
+
+const wp = new Person("John");
+console.log(wp);

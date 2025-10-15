@@ -259,8 +259,16 @@ Personn = __decorate([
 /***********************************************
  * *****RETURNING A CLASS FROM A DECORATOR *****
  ***********************************************/
-function Logerr(target) {
-    console.log(target);
+// for the target
+function Loger(target) {
+    class LoggingClass extends target {
+        constructor(...args) {
+            super(...args);
+            console.log("Creating a new LoggingClass Instance...");
+        }
+    }
+    LoggingClass.company = "Google";
+    return LoggingClass;
 }
 let Personnn = class Personnn {
     constructor(n) {
@@ -268,5 +276,7 @@ let Personnn = class Personnn {
     }
 };
 Personnn = __decorate([
-    Logerr
+    Loger
 ], Personnn);
+const wp = new Person("John");
+console.log(wp);
