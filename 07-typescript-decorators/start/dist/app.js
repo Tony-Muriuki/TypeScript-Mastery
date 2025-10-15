@@ -284,11 +284,15 @@ console.log(wp);
  * *****CREATING A VALIDATION DECORATOR*** *****
  ***********************************************/
 // Required decorator
-function required() { }
-// minLength Decorator
-function minLength() { }
+function required(target, propertyKey) { }
+// minLength Decorator Factory Function
+function minLength(length) {
+    return function (target, propertyKey) { };
+}
 // PositiveNumber Decorator
-function positiveNumber() { }
+function positiveNumber(target, propertyKey) { }
+// Validate
+function validate() { }
 // User Class
 class User {
     constructor(uname, age) {
@@ -296,6 +300,9 @@ class User {
         this.age = age;
     }
 }
+__decorate([
+    required
+], User.prototype, "userName", void 0);
 // Instantiate
 const u1 = new User("John", 28);
 const u2 = new User("", -30); //Invalid Values

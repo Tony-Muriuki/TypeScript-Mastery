@@ -316,16 +316,22 @@ console.log(wp);
  ***********************************************/
 
 // Required decorator
-function required() {}
+function required(target: any, propertyKey: string) {}
 
-// minLength Decorator
-function minLength() {}
+// minLength Decorator Factory Function
+function minLength(length: number) {
+  return function (target: any, propertyKey: string) {};
+}
 
 // PositiveNumber Decorator
-function positiveNumber() {}
+function positiveNumber(target: any, propertyKey: string) {}
+
+// Validate
+function validate() {}
 
 // User Class
 class User {
+  @required
   userName: string;
   age: number;
 
