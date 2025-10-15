@@ -283,6 +283,12 @@ console.log(wp);
 /***********************************************
  * *****CREATING A VALIDATION DECORATOR*** *****
  ***********************************************/
+// Required decorator
+function required() { }
+// minLength Decorator
+function minLength() { }
+// PositiveNumber Decorator
+function positiveNumber() { }
 // User Class
 class User {
     constructor(uname, age) {
@@ -292,3 +298,4 @@ class User {
 }
 // Instantiate
 const u1 = new User("John", 28);
+const u2 = new User("", -30); //Invalid Values
