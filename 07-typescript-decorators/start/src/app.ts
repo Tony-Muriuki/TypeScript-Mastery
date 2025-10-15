@@ -326,8 +326,18 @@ function minLength(length: number) {
 // PositiveNumber Decorator
 function positiveNumber(target: any, propertyKey: string) {}
 
+// Interface Ivalidate
+interface IValidator {
+  //The prop will store the classname whose property name we are going to validate so prop will store User
+  [prop: string]: {
+    [propKey: string]: string[]; // ['required', 'minlength']
+  };
+}
+
 // Validate
-function validate() {}
+function validate(obj: object): boolean {
+  return true;
+}
 
 // User Class
 class User {
@@ -343,3 +353,10 @@ class User {
 // Instantiate
 const u1 = new User("John", 28);
 const u2 = new User("", -30); //Invalid Values
+
+// Invoking Validate using a condition
+if (!validate(u2)) {
+  alert("Invalid Input.");
+} else {
+  console.log("user created successfully");
+}

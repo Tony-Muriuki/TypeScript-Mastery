@@ -292,7 +292,9 @@ function minLength(length) {
 // PositiveNumber Decorator
 function positiveNumber(target, propertyKey) { }
 // Validate
-function validate() { }
+function validate(obj) {
+    return true;
+}
 // User Class
 class User {
     constructor(uname, age) {
@@ -306,3 +308,10 @@ __decorate([
 // Instantiate
 const u1 = new User("John", 28);
 const u2 = new User("", -30); //Invalid Values
+// Invoking Validate using a condition
+if (!validate(u2)) {
+    alert("Invalid Input.");
+}
+else {
+    console.log("user created successfully");
+}
