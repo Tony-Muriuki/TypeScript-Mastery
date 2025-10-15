@@ -310,3 +310,7 @@ class Personnn {
 
 const wp = new Person("John");
 console.log(wp);
+
+/***********************************************
+ * *****CREATING A VALIDATION DECORATOR*** *****
+ ***********************************************/
