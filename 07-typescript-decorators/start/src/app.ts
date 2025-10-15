@@ -330,9 +330,12 @@ function positiveNumber(target: any, propertyKey: string) {}
 interface IValidator {
   //The prop will store the classname whose property name we are going to validate so prop will store User
   [prop: string]: {
-    [propKey: string]: string[]; // ['required', 'minlength']
+    [propKey: string]: string[]; // ['required', 'minlength'] //The propkey will be the property of that class which we are currently to validate eg : { username: ["required", "minLength"] }
+    // In the array of string--> [propKey: string]: string[] its going to store what are the validators we are using on that property
   };
 }
+// Creating a constant which is going to store the class object which we want to validate
+const validateObject: IValidator = {};
 
 // Validate
 function validate(obj: object): boolean {

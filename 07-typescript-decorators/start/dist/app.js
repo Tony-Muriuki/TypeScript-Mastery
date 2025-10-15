@@ -291,6 +291,8 @@ function minLength(length) {
 }
 // PositiveNumber Decorator
 function positiveNumber(target, propertyKey) { }
+// Creating a constant which is going to store the class object which we want to validate
+const validateObject = {};
 // Validate
 function validate(obj) {
     return true;
