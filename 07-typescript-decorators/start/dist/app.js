@@ -288,11 +288,15 @@ function required(target, propName) {
     validateObject[target.constructor.name] = Object.assign(Object.assign({}, validateObject[target.constructor.name]), { [propName]: ["required"] });
 }
 // minLength Decorator Factory Function
-function minLength(length) {
-    return function (target, propertyKey) { };
+function minlength(length) {
+    return function (target, propName) {
+        validateObject[target.constructor.name] = Object.assign(Object.assign({}, validateObject[target.constructor.name]), { [propName]: ["minlength"] });
+    };
 }
 // PositiveNumber Decorator
-function positiveNumber(target, propertyKey) { }
+function positiveNumber(target, propName) {
+    validateObject[target.constructor.name] = Object.assign(Object.assign({}, validateObject[target.constructor.name]), { [propName]: ["positiveNumber"] });
+}
 // Creating a constant which is going to store the class object which we want to validate
 const validateObject = {};
 // Validate
@@ -302,17 +306,19 @@ function validate(obj) {
 // User Class
 class User {
     constructor(uname, age) {
-        this.userName = uname;
+        this.username = uname;
         this.age = age;
     }
 }
 __decorate([
-    required
-], User.prototype, "userName", void 0);
-// Instantiate
-const u1 = new User("John", 28);
-const u2 = new User("", -30); //Invalid Values
-// Invoking Validate using a condition
+    required,
+    minlength(3)
+], User.prototype, "username", void 0);
+__decorate([
+    positiveNumber
+], User.prototype, "age", void 0);
+const u1 = new User("john", 28);
+const u2 = new User("", 30);
 if (!validate(u2)) {
     alert("Invalid Input.");
 }

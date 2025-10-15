@@ -324,12 +324,22 @@ function required(target: any, propName: string) {
 }
 
 // minLength Decorator Factory Function
-function minLength(length: number) {
-  return function (target: any, propertyKey: string) {};
+function minlength(length: number) {
+  return function (target: any, propName: string) {
+    validateObject[target.constructor.name] = {
+      ...validateObject[target.constructor.name],
+      [propName]: ["minlength"],
+    };
+  };
 }
 
 // PositiveNumber Decorator
-function positiveNumber(target: any, propertyKey: string) {}
+function positiveNumber(target: any, propName: string) {
+  validateObject[target.constructor.name] = {
+    ...validateObject[target.constructor.name],
+    [propName]: ["positiveNumber"],
+  };
+}
 
 // Interface Ivalidate
 interface IValidator {
@@ -350,19 +360,21 @@ function validate(obj: object): boolean {
 // User Class
 class User {
   @required
-  userName: string;
+  @minlength(3)
+  username: string;
+
+  @positiveNumber
   age: number;
 
   constructor(uname: string, age: number) {
-    this.userName = uname;
+    this.username = uname;
     this.age = age;
   }
 }
-// Instantiate
-const u1 = new User("John", 28);
-const u2 = new User("", -30); //Invalid Values
 
-// Invoking Validate using a condition
+const u1 = new User("john", 28);
+const u2 = new User("", 30);
+
 if (!validate(u2)) {
   alert("Invalid Input.");
 } else {
