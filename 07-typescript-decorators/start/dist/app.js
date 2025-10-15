@@ -256,3 +256,6 @@ __decorate([
 Personn = __decorate([
     CLS_DECORATOR //class Decorator
 ], Personn);
+/***********************************************
+ * *****RETURNING A CLASS FROM A DECORATOR *****
+ ***********************************************/

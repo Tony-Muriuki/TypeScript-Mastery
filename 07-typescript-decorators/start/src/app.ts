@@ -283,3 +283,7 @@ class Personn {
     //calculate date of birth;
   }
 }
+
+/***********************************************
+ * *****RETURNING A CLASS FROM A DECORATOR *****
+ ***********************************************/
